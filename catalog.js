@@ -242,7 +242,7 @@
           id: "diy",
           zh: "DIY",
           en: "DIY",
-          image: "images/diy/rose-patterns.jpg",
+          image: "images/diy/diy.jpg",
           imageFit: "contain",
           galleryFit: "contain",
           description: {
