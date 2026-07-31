@@ -958,6 +958,16 @@ video {
   object-fit: contain;
 }
 
+.gallery-grid.gallery-grid--single {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 980px;
+  margin-inline: auto;
+}
+
+.gallery-grid--single .gallery-item:first-child {
+  grid-column: 1 / -1;
+}
+
 .showcase-heading {
   display: grid;
   gap: 12px;
