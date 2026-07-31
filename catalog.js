@@ -239,6 +239,25 @@
           video: "video/floral-embroidery.mp4",
         },
         {
+          id: "logo-embroidery",
+          zh: "Logo 刺绣定制",
+          en: "Custom Logo Embroidery",
+          image: "images/custom-embroidery/logo-customization/logo.jpg",
+          imageFit: "contain",
+          galleryFit: "contain",
+          galleryTitle: {
+            zh: "样衣展示",
+            en: "Garment Sample",
+          },
+          description: {
+            zh: "提供企业、团队与个人 Logo 刺绣定制，可将确认后的标志应用于工作服、POLO 衫等服装。",
+            en: "Custom logo embroidery for businesses, teams, and individuals, suitable for workwear, polo shirts, and more.",
+          },
+          gallery: [
+            "images/custom-embroidery/logo-customization/logo-sample.jpg",
+          ],
+        },
+        {
           id: "diy",
           zh: "DIY",
           en: "DIY",
@@ -899,6 +918,7 @@
     const category = catalog[categoryId];
     const other = alternateLanguage(lang);
     const gallery = productGallery(category, product);
+    const galleryTitle = product.galleryTitle?.[lang] || t.gallery;
     const suppliedImage = categoryId === "embroidery";
     document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
     document.title = `${product[lang]}｜Maison Nuvé`;
@@ -919,9 +939,9 @@
         <section class="detail-section">
           <header class="detail-section__header">
             <p class="eyebrow">Gallery</p>
-            <h2>${escapeHtml(t.gallery)}</h2>
+            <h2>${escapeHtml(galleryTitle)}</h2>
           </header>
-          <div class="gallery-grid${product.galleryFit === "contain" ? " is-contain" : ""}">${galleryItems}</div>
+          <div class="gallery-grid${product.galleryFit === "contain" ? " is-contain" : ""}${gallery.length === 1 ? " gallery-grid--single" : ""}">${galleryItems}</div>
         </section>
       `;
     const patternShowcaseSection = patternShowcase(product, lang);
