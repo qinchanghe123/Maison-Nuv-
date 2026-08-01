@@ -179,33 +179,13 @@
         zh: "将名字、图案与心意绣进日常，也可以亲手体验一针一线的乐趣。",
         en: "Turn names, motifs, and memories into stitches—or enjoy making something by hand.",
       },
-      cover: "images/floral-coaster.jpg",
-      colorGuide: {
-        image: "images/custom-embroidery/color-chart.jpg",
-        eyebrow: {
-          zh: "刺绣选色参考",
-          en: "Embroidery color guide",
-        },
-        title: {
-          zh: "选择适合你的刺绣颜色",
-          en: "Choose your embroidery colors",
-        },
-        description: {
-          zh: "可参考色号表选择希望使用的绣线颜色，并结合面料底色、图案风格和使用场景进行搭配。",
-          en: "Use the color chart to choose preferred thread shades, then match them with the fabric color, motif, and intended use.",
-        },
-        note: {
-          zh: "屏幕显示可能存在色差，最终颜色请以门店实际绣线为准。",
-          en: "Screen colors may vary. Please confirm the final shade against the physical thread in store.",
-        },
-      },
+      cover: "images/diy/diy.jpg",
       products: [
         {
           id: "custom-embroidery",
           zh: "刺绣定制",
           en: "Custom Embroidery",
-          image: "images/custom-embroidery/logo_dingzhi.jpg",
-          imageFit: "contain",
+          image: "images/custom-embroidery/finished-examples/finished-05.jpg",
           hideDefaultGallery: true,
           description: {
             zh: "从名字、纪念日期到专属图案，以细密针脚把个人故事留在日常织物上。",
@@ -256,24 +236,6 @@
           gallery: [
             "images/custom-embroidery/logo-customization/logo-sample.jpg",
           ],
-        },
-        {
-          id: "diy",
-          zh: "DIY",
-          en: "DIY",
-          image: "images/diy/diy.jpg",
-          imageFit: "contain",
-          galleryFit: "contain",
-          description: {
-            zh: "从图案选择到亲手完成，在一针一线中体验专注、创造和手作的满足感。",
-            en: "Choose a motif and enjoy the focus, creativity, and satisfaction of making by hand.",
-          },
-          gallery: [
-            "images/diy/rose-patterns.jpg",
-            "images/diy/design-preview.jpg",
-            "images/diy/glow-embroidery.jpg",
-          ],
-          video: "video/floral-embroidery.mp4",
         },
       ],
     },
@@ -684,29 +646,6 @@
     `;
   }
 
-  function colorGuideSection(guide, lang) {
-    if (!guide) return "";
-
-    return `
-      <section class="color-guide">
-        <div class="color-guide__copy">
-          <p class="eyebrow">${escapeHtml(guide.eyebrow[lang])}</p>
-          <h2>${escapeHtml(guide.title[lang])}</h2>
-          <p>${escapeHtml(guide.description[lang])}</p>
-          <small>${escapeHtml(guide.note[lang])}</small>
-        </div>
-        <figure class="color-guide__chart">
-          <img
-            src="${guide.image}"
-            alt="${escapeHtml(guide.title[lang])}"
-            loading="lazy"
-            decoding="async"
-          />
-        </figure>
-      </section>
-    `;
-  }
-
   function collectionScreen(route) {
     const { lang, category: categoryId } = route;
     const t = copy[lang];
@@ -753,7 +692,6 @@
             <span class="collection-count">${category.products.length} ${escapeHtml(t.categories)}</span>
           </header>
           <div class="product-grid">${cards}</div>
-          ${colorGuideSection(category.colorGuide, lang)}
         </section>
         ${footerHtml(lang)}
       </main>
