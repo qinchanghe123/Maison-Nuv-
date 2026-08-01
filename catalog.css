@@ -734,61 +734,6 @@ video {
   font-size: 23px;
 }
 
-.color-guide {
-  display: grid;
-  margin-top: 46px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 3px;
-  background: #fff;
-}
-
-.color-guide__copy {
-  align-self: center;
-  padding: 28px 22px;
-}
-
-.color-guide__copy h2 {
-  margin: 0;
-  font-family: var(--serif);
-  font-size: clamp(1.75rem, 6vw, 3rem);
-  font-weight: 400;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-}
-
-.color-guide__copy > p:not(.eyebrow) {
-  margin: 18px 0 0;
-  color: var(--ink-soft);
-  font-size: 12px;
-  line-height: 1.8;
-}
-
-.color-guide__copy small {
-  display: block;
-  margin-top: 18px;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
-  color: var(--ink-soft);
-  font-size: 9px;
-  line-height: 1.65;
-}
-
-.color-guide__chart {
-  display: grid;
-  margin: 0;
-  padding: 16px;
-  place-items: center;
-  background: var(--paper-deep);
-}
-
-.color-guide__chart img {
-  width: 100%;
-  height: auto;
-  max-height: 78svh;
-  object-fit: contain;
-}
-
 /* Detail */
 .detail-layout {
   display: grid;
@@ -1297,19 +1242,6 @@ video {
     padding: 20px;
   }
 
-  .color-guide {
-    grid-template-columns: minmax(260px, 0.78fr) minmax(0, 1.22fr);
-    margin-top: 58px;
-  }
-
-  .color-guide__copy {
-    padding: 34px;
-  }
-
-  .color-guide__chart {
-    padding: 24px;
-  }
-
   .detail-copy {
     padding: 38px 34px 16px;
   }
@@ -1477,19 +1409,6 @@ video {
 
   .product-card__image {
     aspect-ratio: 4 / 3.4;
-  }
-
-  .color-guide {
-    grid-template-columns: minmax(360px, 0.82fr) minmax(0, 1.18fr);
-    margin-top: 74px;
-  }
-
-  .color-guide__copy {
-    padding: clamp(42px, 5vw, 66px);
-  }
-
-  .color-guide__chart {
-    padding: 34px;
   }
 
   .detail-layout {
