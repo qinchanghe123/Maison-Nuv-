@@ -118,7 +118,19 @@
           id: "loungewear",
           zh: "家居服",
           en: "Loungewear",
-          image: "images/loungewear.jpg",
+          image: "images/loungewear/main.jpg",
+          fullWidthGallery: true,
+          galleryTitle: {
+            zh: "家居服展示",
+            en: "Loungewear Gallery",
+          },
+          gallery: [
+            "images/loungewear/main.jpg",
+            "images/loungewear/gallery-01.jpg",
+            "images/loungewear/gallery-02.jpg",
+            "images/loungewear/gallery-03.jpg",
+            "images/loungewear/gallery-04.jpg",
+          ],
           description: {
             zh: "柔软自在的居家穿着，让休息、阅读与慢下来的时间更加轻松。",
             en: "Soft, easy pieces for resting, reading, and moving through slower moments.",
@@ -128,7 +140,21 @@
           id: "socks",
           zh: "袜子",
           en: "Socks",
-          image: "images/socks.jpg",
+          image: "images/socks/main.jpg",
+          fullWidthGallery: true,
+          price: {
+            zh: "$25/盒（五双）",
+            en: "$25 / box (5 pairs)",
+          },
+          galleryTitle: {
+            zh: "袜子产品展示",
+            en: "Socks Gallery",
+          },
+          gallery: [
+            "images/socks/main.jpg",
+            "images/socks/gallery-01.jpg",
+            "images/socks/gallery-02.jpg",
+          ],
           description: {
             zh: "贴近日常的小小舒适，从触感、颜色到穿着体验都更轻松自然。",
             en: "A small everyday comfort with easy texture, color, and wearability.",
@@ -148,8 +174,12 @@
           id: "fabric-dolls",
           zh: "布艺玩偶",
           en: "Fabric Dolls",
-          image: "images/fabric-dolls/example1.jpg",
-          imageFit: "contain",
+          image: "images/fabric-dolls/main.jpg",
+          introImage: "images/fabric-dolls/example1.jpg",
+          introImageTitle: {
+            zh: "布艺玩偶产品介绍",
+            en: "Fabric Dolls Introduction",
+          },
           hideDefaultGallery: true,
           masonryGallery: Array.from(
             { length: 5 },
@@ -188,13 +218,35 @@
           image: "images/custom-embroidery/finished-examples/finished-05.jpg",
           hideDefaultGallery: true,
           description: {
-            zh: "从名字、纪念日期到专属图案，以细密针脚把个人故事留在日常织物上。",
-            en: "Names, dates, and personal motifs become lasting details through thoughtful stitches.",
+            zh: "从 Logo 样版到真实成品，以细密针脚把品牌、名字与专属图案留在日常织物上。",
+            en: "From logo samples to finished pieces, thoughtful stitches bring brands, names, and personal motifs to life.",
           },
-          patternCollections: [
+          showcaseSections: [
+            {
+              id: "sample-designs",
+              eyebrow: { zh: "定制第一步", en: "The first step" },
+              title: { zh: "样版图", en: "Sample Designs" },
+              description: {
+                zh: "Logo 原图与样衣刺绣效果对照，帮助确认比例、色彩与最终落位。",
+                en: "Compare the original logo with its embroidered garment sample to confirm scale, color, and placement.",
+              },
+              style: "samples",
+              fit: "contain",
+              images: [
+                "images/custom-embroidery/sample-designs/logo.jpg",
+                "images/custom-embroidery/sample-designs/logo-sample.jpg",
+              ],
+            },
             {
               id: "patterns-dark",
-              theme: "dark",
+              eyebrow: { zh: "图案参考", en: "Motif reference" },
+              title: { zh: "国旗与运动", en: "Flags & Sports" },
+              description: {
+                zh: "",
+                en: "",
+              },
+              style: "patterns-dark",
+              fit: "contain",
               images: Array.from(
                 { length: 16 },
                 (_, index) =>
@@ -203,38 +255,64 @@
             },
             {
               id: "patterns-light",
-              theme: "light",
+              eyebrow: { zh: "图案参考", en: "Motif reference" },
+              title: { zh: "卡通、字母与花卉", en: "Cartoons, Letters & Florals" },
+              description: {
+                zh: "白色背景图案完整展示，可逐张点击查看细节。",
+                en: "A complete selection of light-background motifs. Tap any image to inspect the details.",
+              },
+              style: "patterns-light",
+              fit: "contain",
               images: Array.from(
                 { length: 20 },
                 (_, index) =>
                   `images/custom-embroidery/patterns-light/pattern-${String(index + 1).padStart(2, "0")}.jpg`,
               ),
             },
+            {
+              id: "finished-showcase",
+              eyebrow: { zh: "实际效果", en: "Real results" },
+              title: { zh: "刺绣成品展示", en: "Finished Embroidery" },
+              description: {
+                zh: "真实刺绣成品样例，呈现不同图案、针脚密度与织物上的完成效果。",
+                en: "Real finished pieces showing different motifs, stitch densities, and results across fabrics.",
+              },
+              style: "finished",
+              images: Array.from(
+                { length: 6 },
+                (_, index) =>
+                  `images/custom-embroidery/finished-showcase/finished-${String(index + 1).padStart(2, "0")}.jpg`,
+              ),
+            },
           ],
-          finishedGallery: Array.from(
-            { length: 7 },
-            (_, index) =>
-              `images/custom-embroidery/finished-examples/finished-${String(index + 1).padStart(2, "0")}.jpg`,
-          ),
-          video: "video/floral-embroidery.mp4",
         },
         {
-          id: "logo-embroidery",
-          zh: "Logo 刺绣定制",
-          en: "Custom Logo Embroidery",
-          image: "images/custom-embroidery/logo-customization/logo.jpg",
+          id: "diy",
+          zh: "DIY",
+          en: "DIY",
+          image: "images/diy/diy.jpg",
           imageFit: "contain",
-          galleryFit: "contain",
-          galleryTitle: {
-            zh: "样衣展示",
-            en: "Garment Sample",
-          },
+          hideDefaultGallery: true,
           description: {
-            zh: "提供企业、团队与个人 Logo 刺绣定制，可将确认后的标志应用于工作服、POLO 衫等服装。",
-            en: "Custom logo embroidery for businesses, teams, and individuals, suitable for workwear, polo shirts, and more.",
+            zh: "从选色、配线到亲手完成，让每一针都成为属于自己的创作体验。",
+            en: "Choose colors, prepare threads, and enjoy making every stitch part of your own creative experience.",
           },
-          gallery: [
-            "images/custom-embroidery/logo-customization/logo-sample.jpg",
+          showcaseSections: [
+            {
+              id: "diy-finished-showcase",
+              eyebrow: { zh: "实际作品", en: "Real projects" },
+              title: { zh: "成品展示", en: "Finished Pieces" },
+              description: {
+                zh: "DIY 刺绣成品与制作效果展示。",
+                en: "Finished DIY embroidery projects and making results.",
+              },
+              style: "diy-finished",
+              images: Array.from(
+                { length: 11 },
+                (_, index) =>
+                  `images/diy/finished-showcase/finished-${String(index + 1).padStart(2, "0")}.jpg`,
+              ),
+            },
           ],
         },
       ],
@@ -266,6 +344,13 @@
   ];
 
   let heroTimer = null;
+  let revealObserver = null;
+  let parallaxNodes = [];
+  let parallaxFrame = null;
+  let lightboxLastTrigger = null;
+  const lightboxPointers = new Map();
+  let lightboxPinchStart = null;
+  let lightboxPanStart = null;
 
   const copy = {
     zh: {
@@ -287,7 +372,8 @@
       askStoreText: "欢迎向 Maison Nuvé 门店了解当季款式、尺寸与定制方式",
       promise: "让家成为最舒适的地方",
       brandLine: "天然面料 · 品质生活",
-      supplied: "客户实拍",
+      imagePreview: "图片预览",
+      closePreview: "关闭图片",
       menu: {
         bedding: "床品",
         "home-gifts": "家居生活",
@@ -313,7 +399,8 @@
       askStoreText: "Visit Maison Nuvé to discover current styles, sizing, and customization options",
       promise: "Making Home the Most Comfortable Place",
       brandLine: "Natural Fabrics · Quality Living",
-      supplied: "Client imagery",
+      imagePreview: "Image preview",
+      closePreview: "Close image",
       menu: {
         bedding: "Bedding",
         "home-gifts": "Home & Gifts",
@@ -324,35 +411,11 @@
 
   const showcaseCopy = {
     zh: {
-      designEyebrow: "定制图案库",
-      designTitle: "选择你的刺绣灵感",
-      designText: "深色与浅色图案分区展示，可根据服装、家纺或礼物的底色选择更合适的风格。",
-      darkTitle: "国旗与运动",
-      darkHint: "黑色背景图案 · 横向滑动浏览",
-      lightTitle: "卡通、字母与花卉",
-      lightHint: "白色背景图案 · 瀑布流浏览",
-      previous: "上一组图案",
-      next: "下一组图案",
-      finishedEyebrow: "实际成品",
-      finishedTitle: "成品展示",
-      finishedText: "以下图片为实际刺绣成品效果样例，可用于了解针脚、色彩与落位效果。",
       dollEyebrow: "更多角度",
       dollTitle: "玩偶成品细节",
       dollText: "不同造型、尺寸和使用场景的实际展示。",
     },
     en: {
-      designEyebrow: "Motif library",
-      designTitle: "Choose your embroidery inspiration",
-      designText: "Dark and light motif groups make it easier to match clothing, home textiles, and gifts.",
-      darkTitle: "Flags & Sports",
-      darkHint: "Dark-background motifs · swipe horizontally",
-      lightTitle: "Cartoons, Letters & Florals",
-      lightHint: "Light-background motifs · masonry view",
-      previous: "Previous motifs",
-      next: "Next motifs",
-      finishedEyebrow: "Real examples",
-      finishedTitle: "Finished pieces",
-      finishedText: "Real finished embroidery examples showing stitch, color, and placement effects.",
       dollEyebrow: "More views",
       dollTitle: "Finished doll details",
       dollText: "Real views of different shapes, sizes, and everyday uses.",
@@ -443,6 +506,61 @@
     carousel.addEventListener("focusout", () => startHeroAutoplay(carousel));
   }
 
+  function cleanupPageMotion() {
+    revealObserver?.disconnect();
+    revealObserver = null;
+    parallaxNodes.forEach((node) => node.style.removeProperty("--parallax-y"));
+    parallaxNodes = [];
+    if (parallaxFrame) window.cancelAnimationFrame(parallaxFrame);
+    parallaxFrame = null;
+  }
+
+  function updateParallax() {
+    parallaxFrame = null;
+    if (!parallaxNodes.length) return;
+
+    const viewportCenter = window.innerHeight / 2;
+    parallaxNodes.forEach((node) => {
+      const rect = node.getBoundingClientRect();
+      if (rect.bottom < -120 || rect.top > window.innerHeight + 120) return;
+      const speed = Number(node.dataset.parallaxSpeed || 0.04);
+      const offset = Math.max(-38, Math.min(38, (rect.top + rect.height / 2 - viewportCenter) * speed));
+      node.style.setProperty("--parallax-y", `${offset.toFixed(2)}px`);
+    });
+  }
+
+  function queueParallax() {
+    if (parallaxFrame || !parallaxNodes.length) return;
+    parallaxFrame = window.requestAnimationFrame(updateParallax);
+  }
+
+  function initPageMotion() {
+    cleanupPageMotion();
+    document.documentElement.classList.add("motion-ready");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const revealNodes = [...app.querySelectorAll("[data-reveal]")];
+
+    if (reducedMotion || !("IntersectionObserver" in window)) {
+      revealNodes.forEach((node) => node.classList.add("is-visible"));
+      return;
+    }
+
+    revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          revealObserver?.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -7% 0px", threshold: 0.08 },
+    );
+    revealNodes.forEach((node) => revealObserver.observe(node));
+
+    parallaxNodes = [...app.querySelectorAll("[data-parallax]")];
+    updateParallax();
+  }
+
   function alternateLanguage(lang) {
     return lang === "zh" ? "en" : "zh";
   }
@@ -506,14 +624,14 @@
     return `
       <main class="language-screen" id="main-content">
         <section class="language-cover" aria-label="Maison Nuvé">
-          <img src="images/top.jpg" alt="Maison Nuvé 刺绣床品" fetchpriority="high" />
+          <img src="images/top.jpg" alt="Maison Nuvé 刺绣床品" fetchpriority="high" data-parallax data-parallax-speed="0.04" />
           <div class="language-cover__shade"></div>
           <div class="language-cover__brand">
             <p>Home &amp; Living</p>
             <h1>Maison Nuvé</h1>
           </div>
         </section>
-        <section class="language-choice">
+        <section class="language-choice" data-reveal>
           <p class="eyebrow">Bilingual Digital Catalog · 双语电子产品目录</p>
           <h2>请选择语言浏览产品目录</h2>
           <p class="language-choice__en">Please select a language to browse our product catalog</p>
@@ -545,13 +663,21 @@
       .map((id, index) => {
         const category = catalog[id];
         return `
-          <button class="category-card" type="button" data-route="${lang}/${id}">
-            <img src="${category.cover}" alt="" loading="${index === 0 ? "eager" : "lazy"}" />
-            <span class="category-card__number">0${index + 1}</span>
+          <button
+            class="category-card"
+            type="button"
+            data-route="${lang}/${id}"
+            data-reveal
+            style="--reveal-delay: ${index * 70}ms"
+          >
+            <span class="category-card__media">
+              <img src="${category.cover}" alt="" loading="${index === 0 ? "eager" : "lazy"}" />
+              <span class="category-card__number">0${index + 1}</span>
+            </span>
             <span class="category-card__body">
               <h2>${escapeHtml(category[lang])}</h2>
-              <p>${escapeHtml(t.browse)}</p>
-              <span class="category-card__arrow" aria-hidden="true">→</span>
+              <p>${escapeHtml(category[alternateLanguage(lang)])}</p>
+              <span class="category-card__arrow" aria-hidden="true">↗</span>
             </span>
           </button>
         `;
@@ -600,7 +726,7 @@
           aria-roledescription="carousel"
           aria-label="${lang === "zh" ? "产品目录精选图片" : "Featured catalog images"}"
         >
-          <div class="catalog-hero__slides">${heroSlides}</div>
+          <div class="catalog-hero__slides" data-parallax data-parallax-speed="0.065">${heroSlides}</div>
           <div class="catalog-hero__copy">
             <p>${escapeHtml(t.homeLiving)}</p>
             <h1>${escapeHtml(t.catalog)}</h1>
@@ -627,7 +753,7 @@
           </div>
         </section>
         <section class="content-shell">
-          <header class="section-heading">
+          <header class="section-heading" data-reveal>
             <div>
               <p class="eyebrow">Three Collections · 03</p>
               <h2 class="display-title">${escapeHtml(t.explore)}</h2>
@@ -635,7 +761,7 @@
             <p class="lead">${escapeHtml(t.exploreText)}</p>
           </header>
           <div class="category-grid">${cards}</div>
-          <section class="brand-statement">
+          <section class="brand-statement" data-reveal>
             <span class="brand-statement__mark" aria-hidden="true">✣</span>
             <p>${escapeHtml(t.promise)}</p>
             <small>${escapeHtml(t.brandLine)}</small>
@@ -660,6 +786,8 @@
             class="product-card"
             type="button"
             data-route="${lang}/${categoryId}/${product.id}"
+            data-reveal
+            style="--reveal-delay: ${Math.min(index * 55, 280)}ms"
           >
             <span class="product-card__image${product.imageFit === "contain" ? " is-contain" : ""}">
               <img
@@ -673,6 +801,7 @@
               <span>
                 <h2>${escapeHtml(product[lang])}</h2>
                 <p>${escapeHtml(product[alternateLanguage(lang)])}</p>
+                ${product.price ? `<strong class="product-card__price">${escapeHtml(product.price[lang])}</strong>` : ""}
               </span>
               <span class="product-card__arrow" aria-hidden="true">→</span>
             </span>
@@ -685,13 +814,13 @@
       <main class="screen" id="main-content">
         ${headerHtml(route, lang)}
         <section class="content-shell">
-          <header class="collection-intro">
+          <header class="collection-intro" data-reveal>
             <p class="eyebrow">${escapeHtml(t.collection)} · Maison Nuvé</p>
             <h1 class="display-title">${escapeHtml(category[lang])}</h1>
             <p class="lead">${escapeHtml(category.intro[lang])}</p>
             <span class="collection-count">${category.products.length} ${escapeHtml(t.categories)}</span>
           </header>
-          <div class="product-grid">${cards}</div>
+          <div class="product-grid${category.products.length <= 4 ? " product-grid--compact" : ""}">${cards}</div>
         </section>
         ${footerHtml(lang)}
       </main>
@@ -707,114 +836,142 @@
   }
 
   function patternShowcase(product, lang) {
-    if (!product.patternCollections) return "";
+    if (!product.showcaseSections) return "";
 
-    const words = showcaseCopy[lang];
-    const dark = product.patternCollections.find((collection) => collection.theme === "dark");
-    const light = product.patternCollections.find((collection) => collection.theme === "light");
-    const darkItems = (dark?.images || [])
-      .map(
-        (image, index) => `
-          <figure class="pattern-card pattern-card--dark">
-            <img
-              src="${image}"
-              alt="${escapeHtml(words.darkTitle)} ${index + 1}"
-              loading="lazy"
-              decoding="async"
-            />
-            <figcaption>${String(index + 1).padStart(2, "0")}</figcaption>
-          </figure>
-        `,
-      )
-      .join("");
-    const lightItems = (light?.images || [])
-      .map(
-        (image, index) => `
-          <figure class="masonry-card masonry-card--light">
-            <img
-              src="${image}"
-              alt="${escapeHtml(words.lightTitle)} ${index + 1}"
-              loading="lazy"
-              decoding="async"
-            />
-            <figcaption>${String(index + 1).padStart(2, "0")}</figcaption>
-          </figure>
-        `,
-      )
-      .join("");
-    const finishedItems = (product.finishedGallery || [])
-      .map(
-        (image, index) => `
-          <figure class="masonry-card masonry-card--finished">
-            <img
-              src="${image}"
-              alt="${escapeHtml(words.finishedTitle)} ${index + 1}"
-              loading="lazy"
-              decoding="async"
-            />
-          </figure>
-        `,
-      )
-      .join("");
+    return product.showcaseSections
+      .map((section, sectionIndex) => {
+        const items = section.images
+          .map(
+            (image, imageIndex) => `
+              <figure
+                class="embroidery-card${section.fit === "contain" ? " is-contain" : ""}"
+                data-reveal
+                style="--reveal-delay: ${Math.min(imageIndex * 55, 275)}ms"
+              >
+                <button
+                  class="embroidery-card__button"
+                  type="button"
+                  data-lightbox-image="${image}"
+                  data-lightbox-title="${escapeHtml(section.title[lang])} ${imageIndex + 1}"
+                  aria-label="${escapeHtml(copy[lang].imagePreview)}：${escapeHtml(section.title[lang])} ${imageIndex + 1}"
+                >
+                  <img
+                    src="${image}"
+                    alt="${escapeHtml(section.title[lang])} ${imageIndex + 1}"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </button>
+                <figcaption>${String(imageIndex + 1).padStart(2, "0")}</figcaption>
+              </figure>
+            `,
+          )
+          .join("");
 
+        return `
+          <section
+            class="detail-section embroidery-section embroidery-section--${section.style}"
+            aria-labelledby="${section.id}-title"
+            data-reveal
+            style="--reveal-delay: ${sectionIndex * 80}ms"
+          >
+            <header class="detail-section__header showcase-heading">
+              <div>
+                <p class="eyebrow">${escapeHtml(section.eyebrow[lang])}</p>
+                <h2 id="${section.id}-title">${escapeHtml(section.title[lang])}</h2>
+              </div>
+              ${section.description?.[lang] ? `<p>${escapeHtml(section.description[lang])}</p>` : ""}
+            </header>
+            <div class="embroidery-grid embroidery-grid--${section.style}">${items}</div>
+          </section>
+        `;
+      })
+      .join("");
+  }
+
+  function imageLightbox(lang) {
+    const t = copy[lang];
     return `
-      <section class="detail-section embroidery-showcase">
-        <header class="detail-section__header showcase-heading">
-          <div>
-            <p class="eyebrow">${escapeHtml(words.designEyebrow)}</p>
-            <h2>${escapeHtml(words.designTitle)}</h2>
+      <div class="image-lightbox" data-lightbox hidden>
+        <button class="image-lightbox__backdrop" type="button" data-lightbox-close tabindex="-1" aria-label="${escapeHtml(t.closePreview)}"></button>
+        <section class="image-lightbox__panel" role="dialog" aria-modal="true" aria-label="${escapeHtml(t.imagePreview)}">
+          <button class="image-lightbox__close" type="button" data-lightbox-close aria-label="${escapeHtml(t.closePreview)}">×</button>
+          <div class="image-lightbox__viewport" data-lightbox-viewport>
+            <div class="image-lightbox__stage" data-lightbox-stage>
+              <img data-lightbox-img src="" alt="" draggable="false" />
+            </div>
           </div>
-          <p>${escapeHtml(words.designText)}</p>
-        </header>
-
-        <section class="pattern-panel pattern-panel--dark">
-          <header class="pattern-panel__header">
-            <div>
-              <h3>${escapeHtml(words.darkTitle)}</h3>
-              <p>${escapeHtml(words.darkHint)}</p>
-            </div>
-            <div class="carousel-controls">
-              <button
-                type="button"
-                data-carousel-scroll="-1"
-                data-carousel-target="patterns-dark-carousel"
-                aria-label="${escapeHtml(words.previous)}"
-                aria-controls="patterns-dark-carousel"
-              >←</button>
-              <button
-                type="button"
-                data-carousel-scroll="1"
-                data-carousel-target="patterns-dark-carousel"
-                aria-label="${escapeHtml(words.next)}"
-                aria-controls="patterns-dark-carousel"
-              >→</button>
-            </div>
-          </header>
-          <div class="design-carousel" id="patterns-dark-carousel">${darkItems}</div>
         </section>
-
-        <section class="pattern-panel pattern-panel--light">
-          <header class="pattern-panel__header">
-            <div>
-              <h3>${escapeHtml(words.lightTitle)}</h3>
-              <p>${escapeHtml(words.lightHint)}</p>
-            </div>
-          </header>
-          <div class="masonry-grid masonry-grid--patterns">${lightItems}</div>
-        </section>
-      </section>
-
-      <section class="detail-section finished-showcase">
-        <header class="detail-section__header showcase-heading">
-          <div>
-            <p class="eyebrow">${escapeHtml(words.finishedEyebrow)}</p>
-            <h2>${escapeHtml(words.finishedTitle)}</h2>
-          </div>
-          <p>${escapeHtml(words.finishedText)}</p>
-        </header>
-        <div class="masonry-grid masonry-grid--finished">${finishedItems}</div>
-      </section>
+      </div>
     `;
+  }
+
+  function setLightboxScale(lightbox, requestedScale, preserveCenter = true) {
+    if (!lightbox || lightbox.hidden) return;
+    const viewport = lightbox.querySelector("[data-lightbox-viewport]");
+    const stage = lightbox.querySelector("[data-lightbox-stage]");
+    if (!viewport || !stage) return;
+
+    const currentScale = Number(lightbox.dataset.scale || 1);
+    const nextScale = Math.max(1, Math.min(4, Math.round(requestedScale * 100) / 100));
+    if (currentScale === nextScale) return;
+
+    const oldWidth = Math.max(stage.scrollWidth, viewport.clientWidth);
+    const oldHeight = Math.max(stage.scrollHeight, viewport.clientHeight);
+    const centerX = (viewport.scrollLeft + viewport.clientWidth / 2) / oldWidth;
+    const centerY = (viewport.scrollTop + viewport.clientHeight / 2) / oldHeight;
+
+    lightbox.dataset.scale = String(nextScale);
+    stage.style.setProperty("--lightbox-size", `${nextScale * 100}%`);
+
+    if (preserveCenter) {
+      window.requestAnimationFrame(() => {
+        viewport.scrollTo({
+          left: centerX * stage.scrollWidth - viewport.clientWidth / 2,
+          top: centerY * stage.scrollHeight - viewport.clientHeight / 2,
+          behavior: "instant",
+        });
+      });
+    }
+  }
+
+  function resetLightbox(lightbox) {
+    if (!lightbox) return;
+    const viewport = lightbox.querySelector("[data-lightbox-viewport]");
+    const stage = lightbox.querySelector("[data-lightbox-stage]");
+    lightbox.dataset.scale = "1";
+    stage?.style.setProperty("--lightbox-size", "100%");
+    viewport?.scrollTo({ left: 0, top: 0, behavior: "instant" });
+    lightboxPointers.clear();
+    lightboxPinchStart = null;
+    lightboxPanStart = null;
+  }
+
+  function openImageLightbox(trigger) {
+    const lightbox = app.querySelector("[data-lightbox]");
+    if (!lightbox) return;
+    const image = lightbox.querySelector("[data-lightbox-img]");
+    const imageTitle = trigger.dataset.lightboxTitle || "";
+
+    lightboxLastTrigger = trigger;
+    if (image) {
+      image.src = trigger.dataset.lightboxImage || "";
+      image.alt = imageTitle;
+    }
+    lightbox.hidden = false;
+    document.body.classList.add("has-lightbox");
+    resetLightbox(lightbox);
+    window.requestAnimationFrame(() => lightbox.querySelector(".image-lightbox__close")?.focus());
+  }
+
+  function closeImageLightbox(restoreFocus = true) {
+    const lightbox = app.querySelector("[data-lightbox]");
+    if (!lightbox || lightbox.hidden) return;
+    lightbox.hidden = true;
+    document.body.classList.remove("has-lightbox");
+    resetLightbox(lightbox);
+    if (restoreFocus) lightboxLastTrigger?.focus();
+    lightboxLastTrigger = null;
   }
 
   function productMasonryGallery(product, lang) {
@@ -824,7 +981,7 @@
     const items = product.masonryGallery
       .map(
         (image, index) => `
-          <figure class="masonry-card masonry-card--product">
+          <figure class="masonry-card masonry-card--product" data-reveal style="--reveal-delay: ${Math.min(index * 55, 220)}ms">
             <img
               src="${image}"
               alt="${escapeHtml(product[lang])} ${index + 1}"
@@ -837,7 +994,7 @@
       .join("");
 
     return `
-      <section class="detail-section product-masonry-showcase">
+      <section class="detail-section product-masonry-showcase" data-reveal>
         <header class="detail-section__header showcase-heading">
           <div>
             <p class="eyebrow">${escapeHtml(words.dollEyebrow)}</p>
@@ -850,6 +1007,29 @@
     `;
   }
 
+  function productIntroVisual(product, lang) {
+    if (!product.introImage) return "";
+    const title = product.introImageTitle?.[lang] || product[lang];
+    return `
+      <section class="product-intro-visual" data-reveal aria-label="${escapeHtml(title)}">
+        <button
+          class="product-intro-visual__button"
+          type="button"
+          data-lightbox-image="${product.introImage}"
+          data-lightbox-title="${escapeHtml(title)}"
+          aria-label="${escapeHtml(copy[lang].imagePreview)}：${escapeHtml(title)}"
+        >
+          <img
+            src="${product.introImage}"
+            alt="${escapeHtml(title)}"
+            loading="eager"
+            decoding="async"
+          />
+        </button>
+      </section>
+    `;
+  }
+
   function detailScreen(route) {
     const { lang, category: categoryId, product } = route;
     const t = copy[lang];
@@ -857,7 +1037,6 @@
     const other = alternateLanguage(lang);
     const gallery = productGallery(category, product);
     const galleryTitle = product.galleryTitle?.[lang] || t.gallery;
-    const suppliedImage = categoryId === "embroidery";
     document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
     document.title = `${product[lang]}｜Maison Nuvé`;
 
@@ -865,7 +1044,15 @@
       .map(
         (image, index) => `
           <figure class="gallery-item${product.galleryFit === "contain" ? " is-contain" : ""}">
-            <img src="${image}" alt="${escapeHtml(product[lang])} ${index + 1}" loading="lazy" />
+            <button
+              class="gallery-item__button"
+              type="button"
+              data-lightbox-image="${image}"
+              data-lightbox-title="${escapeHtml(product[lang])} ${index + 1}"
+              aria-label="${escapeHtml(t.imagePreview)}：${escapeHtml(product[lang])} ${index + 1}"
+            >
+              <img src="${image}" alt="${escapeHtml(product[lang])} ${index + 1}" loading="lazy" />
+            </button>
           </figure>
         `,
       )
@@ -874,20 +1061,21 @@
     const gallerySection = product.hideDefaultGallery
       ? ""
       : `
-        <section class="detail-section">
+        <section class="detail-section${product.fullWidthGallery ? " detail-section--edge-gallery" : ""}" data-reveal>
           <header class="detail-section__header">
             <p class="eyebrow">Gallery</p>
             <h2>${escapeHtml(galleryTitle)}</h2>
           </header>
-          <div class="gallery-grid${product.galleryFit === "contain" ? " is-contain" : ""}${gallery.length === 1 ? " gallery-grid--single" : ""}">${galleryItems}</div>
+          <div class="gallery-grid${product.galleryFit === "contain" ? " is-contain" : ""}${gallery.length === 1 ? " gallery-grid--single" : ""}${product.fullWidthGallery ? " gallery-grid--edge" : ""}">${galleryItems}</div>
         </section>
       `;
     const patternShowcaseSection = patternShowcase(product, lang);
     const masonryGallerySection = productMasonryGallery(product, lang);
+    const introVisual = productIntroVisual(product, lang);
 
     const video = product.video
       ? `
-        <section class="detail-section">
+        <section class="detail-section" data-reveal>
           <header class="detail-section__header">
             <p class="eyebrow">In the making</p>
             <h2>${escapeHtml(t.video)}</h2>
@@ -912,13 +1100,13 @@
           <article>
             <section class="detail-layout">
             <div class="detail-media${product.imageFit === "contain" ? " is-contain" : ""}">
-              <img src="${product.image}" alt="${escapeHtml(product[lang])}" fetchpriority="high" />
-              ${suppliedImage ? `<span class="detail-media__badge">${escapeHtml(t.supplied)}</span>` : ""}
+              <img src="${product.image}" alt="${escapeHtml(product[lang])}" fetchpriority="high" data-parallax data-parallax-speed="0.035" />
             </div>
-            <div class="detail-copy">
+            <div class="detail-copy" data-reveal>
               <p class="eyebrow">${escapeHtml(category[lang])}</p>
               <h1>${escapeHtml(product[lang])}</h1>
               <p class="detail-copy__secondary">${escapeHtml(product[other])}</p>
+              ${product.price ? `<p class="detail-copy__price">${escapeHtml(product.price[lang])}</p>` : ""}
               <p class="detail-copy__description">${escapeHtml(product.description[lang])}</p>
               <div class="detail-facts" aria-label="${lang === "zh" ? "产品特点" : "Product qualities"}">
                 <div class="detail-fact"><strong>01</strong><span>${escapeHtml(t.natural)}</span></div>
@@ -927,24 +1115,31 @@
               </div>
             </div>
           </section>
+          ${introVisual}
+          ${product.fullWidthGallery ? gallerySection : ""}
           <div class="content-shell detail-support">
-            ${gallerySection}
+            ${product.fullWidthGallery ? "" : gallerySection}
             ${patternShowcaseSection}
             ${masonryGallerySection}
             ${video}
-            <aside class="detail-cta">
+            <aside class="detail-cta" data-reveal>
               <strong>${escapeHtml(t.askStore)}</strong>
               <span>${escapeHtml(t.askStoreText)}</span>
             </aside>
           </div>
         </article>
         ${footerHtml(lang)}
+        ${imageLightbox(lang)}
       </main>
     `;
   }
 
   function render() {
     stopHeroAutoplay();
+    cleanupPageMotion();
+    document.body.classList.remove("has-lightbox");
+    lightboxPointers.clear();
+    lightboxLastTrigger = null;
     const route = parseRoute();
     let markup;
 
@@ -959,13 +1154,25 @@
     }
 
     app.innerHTML = markup;
-    initHeroCarousel();
     window.scrollTo({ top: 0, behavior: "instant" });
+    initHeroCarousel();
+    initPageMotion();
     const heading = app.querySelector("h1, h2");
     if (heading) heading.setAttribute("tabindex", "-1");
   }
 
   document.addEventListener("click", (event) => {
+    const lightboxTrigger = event.target.closest("[data-lightbox-image]");
+    if (lightboxTrigger) {
+      openImageLightbox(lightboxTrigger);
+      return;
+    }
+
+    if (event.target.closest("[data-lightbox-close]")) {
+      closeImageLightbox();
+      return;
+    }
+
     const heroControl = event.target.closest("[data-hero-direction], [data-hero-slide]");
     if (heroControl) {
       const carousel = heroControl.closest("[data-hero-carousel]");
@@ -980,26 +1187,115 @@
       return;
     }
 
-    const carouselButton = event.target.closest("[data-carousel-scroll]");
-    if (carouselButton) {
-      const carousel = document.getElementById(carouselButton.dataset.carouselTarget || "");
-      const direction = Number(carouselButton.dataset.carouselScroll || 0);
-      if (carousel && direction) {
-        carousel.scrollBy({
-          left: carousel.clientWidth * 0.82 * direction,
-          behavior: "smooth",
-        });
-      }
-      return;
-    }
-
     const target = event.target.closest("[data-route]");
     if (!target) return;
     event.preventDefault();
     navigate(target.dataset.route || "");
   });
 
+  document.addEventListener(
+    "wheel",
+    (event) => {
+      const viewport = event.target.closest("[data-lightbox-viewport]");
+      const lightbox = viewport?.closest("[data-lightbox]");
+      if (!lightbox || lightbox.hidden) return;
+      event.preventDefault();
+      const direction = event.deltaY < 0 ? 0.25 : -0.25;
+      setLightboxScale(lightbox, Number(lightbox.dataset.scale || 1) + direction);
+    },
+    { passive: false },
+  );
+
+  document.addEventListener("dblclick", (event) => {
+    const viewport = event.target.closest("[data-lightbox-viewport]");
+    const lightbox = viewport?.closest("[data-lightbox]");
+    if (!lightbox || lightbox.hidden) return;
+    setLightboxScale(lightbox, Number(lightbox.dataset.scale || 1) > 1 ? 1 : 2);
+  });
+
+  document.addEventListener("pointerdown", (event) => {
+    const viewport = event.target.closest("[data-lightbox-viewport]");
+    const lightbox = viewport?.closest("[data-lightbox]");
+    if (!lightbox || lightbox.hidden || (event.pointerType === "mouse" && event.button !== 0)) return;
+    viewport.setPointerCapture?.(event.pointerId);
+    lightboxPointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+
+    if (lightboxPointers.size === 1) {
+      lightboxPanStart = {
+        x: event.clientX,
+        y: event.clientY,
+        left: viewport.scrollLeft,
+        top: viewport.scrollTop,
+      };
+    } else if (lightboxPointers.size === 2) {
+      const [first, second] = [...lightboxPointers.values()];
+      lightboxPinchStart = {
+        distance: Math.hypot(second.x - first.x, second.y - first.y),
+        scale: Number(lightbox.dataset.scale || 1),
+      };
+    }
+  });
+
+  document.addEventListener("pointermove", (event) => {
+    if (!lightboxPointers.has(event.pointerId)) return;
+    const viewport = event.target.closest("[data-lightbox-viewport]") || app.querySelector("[data-lightbox-viewport]");
+    const lightbox = viewport?.closest("[data-lightbox]");
+    if (!viewport || !lightbox || lightbox.hidden) return;
+    event.preventDefault();
+    lightboxPointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+
+    if (lightboxPointers.size === 2 && lightboxPinchStart) {
+      const [first, second] = [...lightboxPointers.values()];
+      const distance = Math.hypot(second.x - first.x, second.y - first.y);
+      setLightboxScale(lightbox, lightboxPinchStart.scale * (distance / lightboxPinchStart.distance), false);
+    } else if (lightboxPointers.size === 1 && lightboxPanStart && Number(lightbox.dataset.scale || 1) > 1) {
+      viewport.scrollLeft = lightboxPanStart.left - (event.clientX - lightboxPanStart.x);
+      viewport.scrollTop = lightboxPanStart.top - (event.clientY - lightboxPanStart.y);
+    }
+  });
+
+  function endLightboxPointer(event) {
+    if (!lightboxPointers.has(event.pointerId)) return;
+    lightboxPointers.delete(event.pointerId);
+    lightboxPinchStart = null;
+    const viewport = app.querySelector("[data-lightbox-viewport]");
+    if (lightboxPointers.size === 1 && viewport) {
+      const remaining = [...lightboxPointers.values()][0];
+      lightboxPanStart = {
+        x: remaining.x,
+        y: remaining.y,
+        left: viewport.scrollLeft,
+        top: viewport.scrollTop,
+      };
+    } else {
+      lightboxPanStart = null;
+    }
+  }
+
+  document.addEventListener("pointerup", endLightboxPointer);
+  document.addEventListener("pointercancel", endLightboxPointer);
+
+  document.addEventListener("keydown", (event) => {
+    const lightbox = app.querySelector("[data-lightbox]");
+    if (!lightbox || lightbox.hidden) return;
+    if (event.key === "Escape") closeImageLightbox();
+    if (event.key === "+" || event.key === "=") {
+      event.preventDefault();
+      setLightboxScale(lightbox, Number(lightbox.dataset.scale || 1) + 0.25);
+    }
+    if (event.key === "-") {
+      event.preventDefault();
+      setLightboxScale(lightbox, Number(lightbox.dataset.scale || 1) - 0.25);
+    }
+    if (event.key === "0") {
+      event.preventDefault();
+      resetLightbox(lightbox);
+    }
+  });
+
   window.addEventListener("hashchange", render);
   window.addEventListener("popstate", render);
+  window.addEventListener("scroll", queueParallax, { passive: true });
+  window.addEventListener("resize", queueParallax, { passive: true });
   render();
 })();
