@@ -17,9 +17,12 @@
 新增客户素材已整理为 GitHub 友好的英文路径：
 
 - `images/custom-embroidery/`：刺绣定制主图及客户素材
-- `images/custom-embroidery/logo-customization/`：Logo 原图及刺绣样衣展示
-- `images/custom-embroidery/patterns-dark/`：黑色背景的国旗、运动图案
-- `images/custom-embroidery/patterns-light/`：白色背景的卡通、字母与花卉图案
-- `images/custom-embroidery/finished-examples/`：实际成品效果
-- `images/diy/`：刺绣定制 & DIY 分类封面素材
+- `images/custom-embroidery/sample-designs/`：刺绣定制的 Logo 原图与样衣样版
+- `images/custom-embroidery/patterns-dark/`：国旗与运动图案
+- `images/custom-embroidery/patterns-light/`：卡通、字母与花卉图案
+- `images/custom-embroidery/finished-showcase/`：刺绣成品展示
+- `images/diy/`：DIY 分类与产品封面素材
+- `images/diy/finished-showcase/`：DIY 成品展示
 - `images/fabric-dolls/`：玩偶首图及 `1–5.jpg` 成品展示
+- `images/socks/`：袜子主图及产品图库
+- `images/loungewear/`：家居服主图及产品图库
