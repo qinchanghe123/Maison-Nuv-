@@ -205,10 +205,7 @@
     embroidery: {
       zh: "刺绣定制 & DIY",
       en: "Custom Embroidery & DIY",
-      intro: {
-        zh: "将名字、图案与心意绣进日常，也可以亲手体验一针一线的乐趣。",
-        en: "Turn names, motifs, and memories into stitches—or enjoy making something by hand.",
-      },
+      hideCollectionCount: true,
       cover: "images/diy/diy.jpg",
       products: [
         {
@@ -240,27 +237,50 @@
             {
               id: "patterns-dark",
               eyebrow: { zh: "图案参考", en: "Motif reference" },
-              title: { zh: "国旗与运动", en: "Flags & Sports" },
+              title: { zh: "", en: "" },
               description: {
                 zh: "",
                 en: "",
               },
               style: "patterns-dark",
               fit: "contain",
-              images: Array.from(
-                { length: 16 },
-                (_, index) =>
-                  `images/custom-embroidery/patterns-dark/pattern-${String(index + 1).padStart(2, "0")}.jpg`,
-              ),
+              images: Array.from({ length: 16 }, (_, index) => index + 1)
+                .filter((number) => number !== 8)
+                .map(
+                  (number) =>
+                    `images/custom-embroidery/patterns-dark/pattern-${String(number).padStart(2, "0")}.jpg`,
+                ),
+              captions: [
+                { zh: "世界旗帜与地区徽章", en: "World Flags & Regional Emblems" },
+                { zh: "球类与运动徽章", en: "Ball Sports & Athletic Emblems" },
+                { zh: "高尔夫、橄榄球与球类运动", en: "Golf, Football & Ball Sports" },
+                { zh: "运动器材与户外项目", en: "Sports Equipment & Outdoor Activities" },
+                { zh: "彩色团队运动与竞技", en: "Colorful Team Sports & Games" },
+                { zh: "网球、高尔夫与保龄球", en: "Tennis, Golf & Bowling" },
+                { zh: "体操与运动人物剪影", en: "Gymnastics & Athletic Silhouettes" },
+                { zh: "美国州旗与州徽", en: "U.S. State Flags & Emblems" },
+                { zh: "州花与地标徽章", en: "State Flowers & Landmark Emblems" },
+                { zh: "地区轮廓与省州徽章", en: "Regional Outlines & Provincial Emblems" },
+                { zh: "多项运动人物剪影", en: "Multi-Sport Athlete Silhouettes" },
+                { zh: "足球、橄榄球与保龄球", en: "Soccer, Football & Bowling" },
+                { zh: "州花与加拿大枫叶", en: "State Flowers & Canadian Maple Leaves" },
+                { zh: "休闲、格斗与水上运动", en: "Recreation, Combat & Water Sports" },
+                { zh: "运动文字与俱乐部徽章", en: "Sports Lettering & Club Emblems" },
+              ],
+            },
+            {
+              id: "pattern-animal-portraits",
+              eyebrow: { zh: "独立图案参考", en: "Featured motif reference" },
+              title: { zh: "动物与宠物肖像", en: "Animal & Pet Portraits" },
+              style: "pattern-feature",
+              fit: "contain",
+              images: ["images/custom-embroidery/patterns-dark/pattern-08.jpg"],
+              captions: [{ zh: "动物与宠物肖像", en: "Animal & Pet Portraits" }],
             },
             {
               id: "patterns-light",
               eyebrow: { zh: "图案参考", en: "Motif reference" },
               title: { zh: "卡通、字母与花卉", en: "Cartoons, Letters & Florals" },
-              description: {
-                zh: "白色背景图案完整展示，可逐张点击查看细节。",
-                en: "A complete selection of light-background motifs. Tap any image to inspect the details.",
-              },
               style: "patterns-light",
               fit: "contain",
               images: Array.from(
@@ -268,6 +288,28 @@
                 (_, index) =>
                   `images/custom-embroidery/patterns-light/pattern-${String(index + 1).padStart(2, "0")}.jpg`,
               ),
+              captions: [
+                { zh: "蓝色花卉与复古花框", en: "Blue Florals & Vintage Frames" },
+                { zh: "儿童数字与童趣动物", en: "Children's Numbers & Playful Animals" },
+                { zh: "花叶装饰英文字母", en: "Botanical Script Alphabet" },
+                { zh: "海洋动物与水手主题", en: "Nautical Animals & Sailor Motifs" },
+                { zh: "童话动物与梦幻角色", en: "Storybook Animals & Fantasy Characters" },
+                { zh: "粉色花束与蝴蝶", en: "Pink Bouquets & Butterflies" },
+                { zh: "花卉字母刺绣样例", en: "Floral Monogram Embroidery Samples" },
+                { zh: "狐狸、独角兽与童趣图案", en: "Foxes, Unicorns & Playful Motifs" },
+                { zh: "玫瑰花卉字母组合", en: "Rose Floral Monograms" },
+                { zh: "海洋动物与卡通角色", en: "Ocean Animals & Cartoon Characters" },
+                { zh: "锦鲤与吉祥金鱼", en: "Koi & Auspicious Goldfish" },
+                { zh: "兔子与水手动物组合", en: "Bunnies & Sailor Animal Sets" },
+                { zh: "蝴蝶、皇冠与童话动物", en: "Butterflies, Crowns & Fairytale Animals" },
+                { zh: "薰衣草花环字母", en: "Lavender Wreath Monogram" },
+                { zh: "玫瑰装饰花体字母", en: "Rose-Decorated Script Alphabet" },
+                { zh: "蓝色花体字母组合", en: "Blue Script Monograms" },
+                { zh: "卡通动物姓名贴与徽章", en: "Cartoon Animal Name Tags & Badges" },
+                { zh: "花卉 Smile 文字", en: "Floral Smile Lettering" },
+                { zh: "童趣动物、彩虹与云朵", en: "Playful Animals, Rainbows & Clouds" },
+                { zh: "蓝色蝴蝶结图案", en: "Blue Bow Motifs" },
+              ],
             },
             {
               id: "finished-showcase",
@@ -293,18 +335,14 @@
           image: "images/diy/diy.jpg",
           imageFit: "contain",
           hideDefaultGallery: true,
-          description: {
-            zh: "从选色、配线到亲手完成，让每一针都成为属于自己的创作体验。",
-            en: "Choose colors, prepare threads, and enjoy making every stitch part of your own creative experience.",
-          },
           showcaseSections: [
             {
               id: "diy-finished-showcase",
               eyebrow: { zh: "实际作品", en: "Real projects" },
               title: { zh: "成品展示", en: "Finished Pieces" },
               description: {
-                zh: "DIY 刺绣成品与制作效果展示。",
-                en: "Finished DIY embroidery projects and making results.",
+                zh: "DIY 成品与制作效果展示。",
+                en: "Finished DIY projects and making results.",
               },
               style: "diy-finished",
               images: Array.from(
@@ -348,6 +386,7 @@
   let parallaxNodes = [];
   let parallaxFrame = null;
   let lightboxLastTrigger = null;
+  let lightboxScrollY = 0;
   const lightboxPointers = new Map();
   let lightboxPinchStart = null;
   let lightboxPanStart = null;
@@ -818,8 +857,8 @@
           <header class="collection-intro" data-reveal>
             <p class="eyebrow">${escapeHtml(t.collection)} · Maison Nuvé</p>
             <h1 class="display-title">${escapeHtml(category[lang])}</h1>
-            <p class="lead">${escapeHtml(category.intro[lang])}</p>
-            <span class="collection-count">${category.products.length} ${escapeHtml(t.categories)}</span>
+            ${category.intro?.[lang] ? `<p class="lead">${escapeHtml(category.intro[lang])}</p>` : ""}
+            ${category.hideCollectionCount ? "" : `<span class="collection-count">${category.products.length} ${escapeHtml(t.categories)}</span>`}
           </header>
           <div class="product-grid${category.products.length <= 4 ? " product-grid--compact" : ""}">${cards}</div>
         </section>
@@ -841,11 +880,16 @@
 
     return product.showcaseSections
       .map((section, sectionIndex) => {
+        const sectionTitle = section.title?.[lang] || "";
+        const sectionEyebrow = section.eyebrow?.[lang] || "";
+        const sectionLabel = sectionTitle || sectionEyebrow || copy[lang].imagePreview;
         const items = section.images
-          .map(
-            (image, imageIndex) => `
+          .map((image, imageIndex) => {
+            const caption = section.captions?.[imageIndex]?.[lang] || "";
+            const imageTitle = caption || `${sectionLabel} ${imageIndex + 1}`;
+            return `
               <figure
-                class="embroidery-card${section.fit === "contain" ? " is-contain" : ""}"
+                class="embroidery-card${section.fit === "contain" ? " is-contain" : ""}${caption ? " has-caption" : ""}"
                 data-reveal
                 style="--reveal-delay: ${Math.min(imageIndex * 55, 275)}ms"
               >
@@ -853,33 +897,33 @@
                   class="embroidery-card__button"
                   type="button"
                   data-lightbox-image="${image}"
-                  data-lightbox-title="${escapeHtml(section.title[lang])} ${imageIndex + 1}"
-                  aria-label="${escapeHtml(copy[lang].imagePreview)}：${escapeHtml(section.title[lang])} ${imageIndex + 1}"
+                  data-lightbox-title="${escapeHtml(imageTitle)}"
+                  aria-label="${escapeHtml(copy[lang].imagePreview)}：${escapeHtml(imageTitle)}"
                 >
                   <img
                     src="${image}"
-                    alt="${escapeHtml(section.title[lang])} ${imageIndex + 1}"
+                    alt="${escapeHtml(imageTitle)}"
                     loading="lazy"
                     decoding="async"
                   />
                 </button>
-                <figcaption>${String(imageIndex + 1).padStart(2, "0")}</figcaption>
+                <figcaption>${caption ? escapeHtml(caption) : String(imageIndex + 1).padStart(2, "0")}</figcaption>
               </figure>
-            `,
-          )
+            `;
+          })
           .join("");
 
         return `
           <section
             class="detail-section embroidery-section embroidery-section--${section.style}"
-            aria-labelledby="${section.id}-title"
+            ${sectionTitle ? `aria-labelledby="${section.id}-title"` : `aria-label="${escapeHtml(sectionLabel)}"`}
             data-reveal
             style="--reveal-delay: ${sectionIndex * 80}ms"
           >
             <header class="detail-section__header showcase-heading">
               <div>
-                <p class="eyebrow">${escapeHtml(section.eyebrow[lang])}</p>
-                <h2 id="${section.id}-title">${escapeHtml(section.title[lang])}</h2>
+                ${sectionEyebrow ? `<p class="eyebrow">${escapeHtml(sectionEyebrow)}</p>` : ""}
+                ${sectionTitle ? `<h2 id="${section.id}-title">${escapeHtml(sectionTitle)}</h2>` : ""}
               </div>
               ${section.description?.[lang] ? `<p>${escapeHtml(section.description[lang])}</p>` : ""}
             </header>
@@ -948,6 +992,21 @@
     lightboxPanStart = null;
   }
 
+  function lockPageForLightbox() {
+    lightboxScrollY = window.scrollY || document.documentElement.scrollTop || 0;
+    document.documentElement.classList.add("has-lightbox");
+    document.body.classList.add("has-lightbox");
+  }
+
+  function unlockPageAfterLightbox() {
+    if (!document.body.classList.contains("has-lightbox")) return;
+    document.documentElement.classList.remove("has-lightbox");
+    document.body.classList.remove("has-lightbox");
+    if (Math.abs(window.scrollY - lightboxScrollY) > 1) {
+      window.scrollTo({ top: lightboxScrollY, left: 0, behavior: "instant" });
+    }
+  }
+
   function openImageLightbox(trigger) {
     const lightbox = app.querySelector("[data-lightbox]");
     if (!lightbox) return;
@@ -960,18 +1019,18 @@
       image.alt = imageTitle;
     }
     lightbox.hidden = false;
-    document.body.classList.add("has-lightbox");
+    lockPageForLightbox();
     resetLightbox(lightbox);
-    window.requestAnimationFrame(() => lightbox.querySelector(".image-lightbox__close")?.focus());
+    window.requestAnimationFrame(() => lightbox.querySelector(".image-lightbox__close")?.focus({ preventScroll: true }));
   }
 
   function closeImageLightbox(restoreFocus = true) {
     const lightbox = app.querySelector("[data-lightbox]");
     if (!lightbox || lightbox.hidden) return;
     lightbox.hidden = true;
-    document.body.classList.remove("has-lightbox");
+    unlockPageAfterLightbox();
     resetLightbox(lightbox);
-    if (restoreFocus) lightboxLastTrigger?.focus();
+    if (restoreFocus) lightboxLastTrigger?.focus({ preventScroll: true });
     lightboxLastTrigger = null;
   }
 
@@ -1108,7 +1167,7 @@
               <h1>${escapeHtml(product[lang])}</h1>
               <p class="detail-copy__secondary">${escapeHtml(product[other])}</p>
               ${product.price ? `<p class="detail-copy__price">${escapeHtml(product.price[lang])}</p>` : ""}
-              <p class="detail-copy__description">${escapeHtml(product.description[lang])}</p>
+              ${product.description?.[lang] ? `<p class="detail-copy__description">${escapeHtml(product.description[lang])}</p>` : ""}
               <div class="detail-facts" aria-label="${lang === "zh" ? "产品特点" : "Product qualities"}">
                 <div class="detail-fact"><strong>01</strong><span>${escapeHtml(t.natural)}</span></div>
                 <div class="detail-fact"><strong>02</strong><span>${escapeHtml(t.craft)}</span></div>
@@ -1138,7 +1197,7 @@
   function render() {
     stopHeroAutoplay();
     cleanupPageMotion();
-    document.body.classList.remove("has-lightbox");
+    unlockPageAfterLightbox();
     lightboxPointers.clear();
     lightboxLastTrigger = null;
     const route = parseRoute();
@@ -1165,6 +1224,7 @@
   document.addEventListener("click", (event) => {
     const lightboxTrigger = event.target.closest("[data-lightbox-image]");
     if (lightboxTrigger) {
+      event.preventDefault();
       openImageLightbox(lightboxTrigger);
       return;
     }
