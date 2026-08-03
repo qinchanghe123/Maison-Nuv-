@@ -299,6 +299,16 @@ video {
   line-height: 1.7;
 }
 
+.language-signature__address {
+  margin-top: 12px;
+  color: var(--rose-dark);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  line-height: 1.7;
+}
+
 /* Navigation */
 .site-header {
   position: sticky;
