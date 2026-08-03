@@ -107,7 +107,7 @@ video {
   width: min(100%, var(--page-width));
   min-height: 100svh;
   margin: 0 auto;
-  animation: screen-in 420ms ease both;
+  animation: screen-in 420ms ease backwards;
 }
 
 @keyframes screen-in {
@@ -2099,6 +2099,12 @@ body::before {
   grid-template-columns: minmax(0, 1fr);
 }
 
+.embroidery-grid--pattern-feature {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 920px;
+  margin-inline: auto;
+}
+
 .embroidery-card {
   position: relative;
   display: block;
@@ -2166,6 +2172,11 @@ body::before {
   box-shadow: 0 14px 38px rgba(0, 0, 0, 0.34);
 }
 
+.embroidery-section--pattern-feature .embroidery-card {
+  border: 1px solid rgba(117, 88, 56, 0.16);
+  background: #090909;
+}
+
 .embroidery-section--patterns-light .embroidery-card {
   border: 1px solid rgba(117, 88, 56, 0.12);
   background: #fff;
@@ -2191,8 +2202,41 @@ body::before {
   pointer-events: none;
 }
 
+.embroidery-card.has-caption figcaption {
+  position: static;
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 14px 13px;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0;
+  color: #fffdf8;
+  background: #090909;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 550;
+  letter-spacing: 0.04em;
+  line-height: 1.55;
+  text-align: center;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.embroidery-section--patterns-light .embroidery-card.has-caption figcaption {
+  border-top-color: rgba(117, 88, 56, 0.12);
+  color: var(--ink);
+  background: #fff;
+}
+
+html.has-lightbox,
 body.has-lightbox {
   overflow: hidden;
+  overscroll-behavior: none;
   touch-action: none;
 }
 
