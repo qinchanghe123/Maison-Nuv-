@@ -2233,6 +2233,47 @@ body::before {
   background: #fff;
 }
 
+.embroidery-section--compact-reference .embroidery-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(10px, 2.5vw, 18px);
+}
+
+.embroidery-section--compact-reference .embroidery-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 0;
+  padding: 0;
+  border-radius: clamp(9px, 2vw, 14px);
+  box-shadow: 0 9px 24px rgba(46, 34, 27, 0.14);
+}
+
+.embroidery-section--compact-reference .embroidery-card.is-contain {
+  min-height: 0;
+  padding: 0;
+}
+
+.embroidery-section--compact-reference .embroidery-card.is-contain .embroidery-card__button {
+  min-height: 0;
+  aspect-ratio: 1 / 1;
+  padding: clamp(5px, 1.4vw, 10px);
+}
+
+.embroidery-section--compact-reference .embroidery-card.is-contain img {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: contain;
+}
+
+.embroidery-section--compact-reference .embroidery-card.has-caption figcaption {
+  min-height: clamp(52px, 10vw, 76px);
+  padding: clamp(9px, 2vw, 14px) 7px;
+  font-size: clamp(0.68rem, 2.7vw, 0.82rem);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.4;
+}
+
 html.has-lightbox,
 body.has-lightbox {
   overflow: hidden;
