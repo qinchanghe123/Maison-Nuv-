@@ -244,6 +244,8 @@
               },
               style: "patterns-dark",
               fit: "contain",
+              compactGrid: true,
+              displayOrder: 3,
               images: Array.from({ length: 16 }, (_, index) => index + 1)
                 .filter((number) => number !== 8)
                 .map(
@@ -263,7 +265,7 @@
                 { zh: "地区轮廓与省州徽章", en: "Regional Outlines & Provincial Emblems" },
                 { zh: "多项运动人物剪影", en: "Multi-Sport Athlete Silhouettes" },
                 { zh: "足球、橄榄球与保龄球", en: "Soccer, Football & Bowling" },
-                { zh: "州花与加拿大枫叶", en: "State Flowers & Canadian Maple Leaves" },
+                { zh: "州花", en: "State Flowers" },
                 { zh: "休闲、格斗与水上运动", en: "Recreation, Combat & Water Sports" },
                 { zh: "运动文字与俱乐部徽章", en: "Sports Lettering & Club Emblems" },
               ],
@@ -274,6 +276,7 @@
               title: { zh: "动物与宠物肖像", en: "Animal & Pet Portraits" },
               style: "pattern-feature",
               fit: "contain",
+              displayOrder: 2,
               images: ["images/custom-embroidery/patterns-dark/pattern-08.jpg"],
               captions: [{ zh: "动物与宠物肖像", en: "Animal & Pet Portraits" }],
             },
@@ -283,6 +286,8 @@
               title: { zh: "卡通、字母与花卉", en: "Cartoons, Letters & Florals" },
               style: "patterns-light",
               fit: "contain",
+              compactGrid: true,
+              displayOrder: 1,
               images: Array.from(
                 { length: 20 },
                 (_, index) =>
@@ -320,6 +325,7 @@
                 en: "Real finished pieces showing different motifs, stitch densities, and results across fabrics.",
               },
               style: "finished",
+              displayOrder: 4,
               images: Array.from(
                 { length: 6 },
                 (_, index) =>
@@ -878,7 +884,8 @@
   function patternShowcase(product, lang) {
     if (!product.showcaseSections) return "";
 
-    return product.showcaseSections
+    return [...product.showcaseSections]
+      .sort((first, second) => (first.displayOrder ?? 0) - (second.displayOrder ?? 0))
       .map((section, sectionIndex) => {
         const sectionTitle = section.title?.[lang] || "";
         const sectionEyebrow = section.eyebrow?.[lang] || "";
@@ -915,7 +922,7 @@
 
         return `
           <section
-            class="detail-section embroidery-section embroidery-section--${section.style}"
+            class="detail-section embroidery-section embroidery-section--${section.style}${section.compactGrid ? " embroidery-section--compact-reference" : ""}"
             ${sectionTitle ? `aria-labelledby="${section.id}-title"` : `aria-label="${escapeHtml(sectionLabel)}"`}
             data-reveal
             style="--reveal-delay: ${sectionIndex * 80}ms"
