@@ -26,3 +26,4 @@
 - `images/fabric-dolls/`：玩偶首图及 `1–5.jpg` 成品展示
 - `images/socks/`：袜子主图及产品图库
 - `images/loungewear/`：家居服主图及产品图库
+- `images/pillows/`：枕头主图及产品图库

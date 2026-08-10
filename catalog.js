@@ -67,7 +67,23 @@
           id: "pillows",
           zh: "枕头",
           en: "Pillows",
-          image: "images/pillows.jpg",
+          image: "images/pillows/pillow-01-silk.jpg",
+          imageFit: "contain",
+          galleryFit: "contain",
+          fullWidthGallery: true,
+          tightImagePadding: true,
+          tightGallery: true,
+          galleryTitle: {
+            zh: "枕头产品展示",
+            en: "Pillow Collection",
+          },
+          gallery: [
+            "images/pillows/pillow-01-silk.jpg",
+            "images/pillows/pillow-02-memory-foam.jpg",
+            "images/pillows/pillow-03-silk-neck-support.jpg",
+            "images/pillows/pillow-04-cooling-latex.jpg",
+            "images/pillows/pillow-05-multi-use-bolster.jpg",
+          ],
           description: {
             zh: "从支撑到触感，为不同睡姿寻找更适合的枕感，让睡眠更完整。",
             en: "Support and softness come together to complement different ways of sleeping.",
@@ -835,7 +851,7 @@
             data-reveal
             style="--reveal-delay: ${Math.min(index * 55, 280)}ms"
           >
-            <span class="product-card__image${product.imageFit === "contain" ? " is-contain" : ""}">
+            <span class="product-card__image${product.imageFit === "contain" ? " is-contain" : ""}${product.tightImagePadding ? " is-tight" : ""}">
               <img
                 src="${product.image}"
                 alt="${escapeHtml(product[lang])}"
@@ -1128,12 +1144,12 @@
     const gallerySection = product.hideDefaultGallery
       ? ""
       : `
-        <section class="detail-section${product.fullWidthGallery ? " detail-section--edge-gallery" : ""}" data-reveal>
+        <section class="detail-section${product.fullWidthGallery ? " detail-section--edge-gallery" : ""}${product.tightGallery ? " detail-section--tight-gallery" : ""}" data-reveal>
           <header class="detail-section__header">
             <p class="eyebrow">Gallery</p>
             <h2>${escapeHtml(galleryTitle)}</h2>
           </header>
-          <div class="gallery-grid${product.galleryFit === "contain" ? " is-contain" : ""}${gallery.length === 1 ? " gallery-grid--single" : ""}${product.fullWidthGallery ? " gallery-grid--edge" : ""}">${galleryItems}</div>
+          <div class="gallery-grid${product.galleryFit === "contain" ? " is-contain" : ""}${gallery.length === 1 ? " gallery-grid--single" : ""}${product.fullWidthGallery ? " gallery-grid--edge" : ""}${product.tightGallery ? " gallery-grid--tight" : ""}">${galleryItems}</div>
         </section>
       `;
     const patternShowcaseSection = patternShowcase(product, lang);
@@ -1166,7 +1182,7 @@
           ${headerHtml(route, `${lang}/${categoryId}`)}
           <article>
             <section class="detail-layout">
-            <div class="detail-media${product.imageFit === "contain" ? " is-contain" : ""}">
+            <div class="detail-media${product.imageFit === "contain" ? " is-contain" : ""}${product.tightImagePadding ? " is-tight" : ""}">
               <img src="${product.image}" alt="${escapeHtml(product[lang])}" fetchpriority="high" data-parallax data-parallax-speed="0.035" />
             </div>
             <div class="detail-copy" data-reveal>
