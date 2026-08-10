@@ -1874,6 +1874,10 @@ body::before {
   padding: 7px;
 }
 
+.product-card__image.is-contain.is-tight img {
+  padding: 2px;
+}
+
 .product-card__index {
   top: 7px;
   left: 7px;
@@ -2037,6 +2041,38 @@ body::before {
   height: auto;
   aspect-ratio: auto;
   object-fit: contain;
+}
+
+.detail-section.detail-section--edge-gallery.detail-section--tight-gallery {
+  margin: 8px 0 0;
+  padding-bottom: 2px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.detail-section--tight-gallery .detail-section__header {
+  padding: 16px 10px 0;
+}
+
+.gallery-grid--edge.gallery-grid--tight {
+  gap: 5px;
+  margin: 0;
+}
+
+.gallery-grid.is-contain.gallery-grid--tight .gallery-item {
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.gallery-grid--tight .gallery-item,
+.gallery-grid--tight .gallery-item:first-child {
+  border-radius: 2px;
 }
 
 .detail-section {
@@ -2718,6 +2754,12 @@ body.has-lightbox {
   .product-grid--compact {
     grid-template-columns: repeat(2, minmax(0, 290px));
   }
+}
+
+/* Pillow imagery uses the available card width with almost no white inset. */
+.product-card__image.is-tight {
+  margin: 2px 2px 0;
+  border-radius: calc(var(--radius-md) - 2px);
 }
 
 @media (prefers-reduced-motion: reduce) {
