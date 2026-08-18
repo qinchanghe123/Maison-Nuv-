@@ -81,9 +81,9 @@
             ],
             en: [
               "images/silk-duvets/en-01-product-overview.jpg",
-              "images/silk-duvets/en-02-material-detail.jpg",
+              "images/silk-duvets/en-02-sleep-comfort.jpg",
               "images/silk-duvets/en-03-carry-bag.jpg",
-              "images/silk-duvets/en-04-carry-bag-detail.jpg",
+              "images/silk-duvets/en-04-draped-detail.jpg",
             ],
           },
           description: {
