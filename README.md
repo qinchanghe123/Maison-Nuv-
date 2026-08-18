@@ -27,3 +27,4 @@
 - `images/socks/`：袜子主图及产品图库
 - `images/loungewear/`：家居服主图及产品图库
 - `images/pillows/`：枕头主图及产品图库
+- `images/silk-duvets/`：蚕丝被中英文主图及产品图库

@@ -57,7 +57,35 @@
           id: "silk-duvet-inserts",
           zh: "蚕丝被",
           en: "Silk Duvet Inserts",
-          image: "images/silk-duvet.jpg",
+          image: "images/silk-duvets/cn-01-product-overview.jpg",
+          imageByLanguage: {
+            zh: "images/silk-duvets/cn-01-product-overview.jpg",
+            en: "images/silk-duvets/en-01-product-overview.jpg",
+          },
+          imageFit: "contain",
+          galleryFit: "contain",
+          fullWidthGallery: true,
+          tightImagePadding: true,
+          tightGallery: true,
+          hideGalleryHeaderByLanguage: ["en"],
+          galleryTitle: {
+            zh: "可水洗蚕丝夏被",
+          },
+          galleryByLanguage: {
+            zh: [
+              "images/silk-duvets/cn-01-product-overview.jpg",
+              "images/silk-duvets/cn-02-bed-display.jpg",
+              "images/silk-duvets/cn-03-draped-detail.jpg",
+              "images/silk-duvets/cn-04-feature-detail.jpg",
+              "images/silk-duvets/cn-05-sleep-comfort.jpg",
+            ],
+            en: [
+              "images/silk-duvets/en-01-product-overview.jpg",
+              "images/silk-duvets/en-02-material-detail.jpg",
+              "images/silk-duvets/en-03-carry-bag.jpg",
+              "images/silk-duvets/en-04-carry-bag-detail.jpg",
+            ],
+          },
           description: {
             zh: "轻柔贴合的高级睡眠选择，呈现细腻、安静且不过分厚重的舒适感。",
             en: "A refined sleep layer with a light, gentle drape and quietly luxurious comfort.",
@@ -125,6 +153,7 @@
           zh: "小毛巾",
           en: "Hand Towels",
           image: "images/hand-towels.jpg",
+          gallery: ["images/hand-towels.jpg", "images/bath-towels.jpg"],
           description: {
             zh: "轻巧实用的日常毛巾，适合洗漱、客用与随手收纳。",
             en: "A compact everyday essential for washing, guests, and simple storage.",
@@ -626,6 +655,10 @@
     return lang === "zh" ? "en" : "zh";
   }
 
+  function productImage(product, lang) {
+    return product.imageByLanguage?.[lang] || product.image;
+  }
+
   function routeFor(route, langOverride) {
     const lang = langOverride || route.lang;
     return [lang, route.category, route.product?.id].filter(Boolean).join("/");
@@ -853,7 +886,7 @@
           >
             <span class="product-card__image${product.imageFit === "contain" ? " is-contain" : ""}${product.tightImagePadding ? " is-tight" : ""}">
               <img
-                src="${product.image}"
+                src="${productImage(product, lang)}"
                 alt="${escapeHtml(product[lang])}"
                 loading="${index < 2 ? "eager" : "lazy"}"
               />
@@ -889,11 +922,15 @@
     `;
   }
 
-  function productGallery(category, product) {
+  function productGallery(category, product, lang) {
+    if (product.galleryByLanguage?.[lang]) return product.galleryByLanguage[lang];
     if (product.gallery) return product.gallery;
     return [
-      product.image,
-      ...category.products.filter((item) => item.id !== product.id).slice(0, 2).map((item) => item.image),
+      productImage(product, lang),
+      ...category.products
+        .filter((item) => item.id !== product.id)
+        .slice(0, 2)
+        .map((item) => productImage(item, lang)),
     ];
   }
 
@@ -1118,8 +1155,9 @@
     const t = copy[lang];
     const category = catalog[categoryId];
     const other = alternateLanguage(lang);
-    const gallery = productGallery(category, product);
+    const gallery = productGallery(category, product, lang);
     const galleryTitle = product.galleryTitle?.[lang] || t.gallery;
+    const hideGalleryHeader = product.hideGalleryHeaderByLanguage?.includes(lang);
     document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
     document.title = `${product[lang]}｜Maison Nuvé`;
 
@@ -1145,10 +1183,12 @@
       ? ""
       : `
         <section class="detail-section${product.fullWidthGallery ? " detail-section--edge-gallery" : ""}${product.tightGallery ? " detail-section--tight-gallery" : ""}" data-reveal>
-          <header class="detail-section__header">
-            <p class="eyebrow">Gallery</p>
-            <h2>${escapeHtml(galleryTitle)}</h2>
-          </header>
+          ${hideGalleryHeader ? "" : `
+            <header class="detail-section__header">
+              <p class="eyebrow">Gallery</p>
+              <h2>${escapeHtml(galleryTitle)}</h2>
+            </header>
+          `}
           <div class="gallery-grid${product.galleryFit === "contain" ? " is-contain" : ""}${gallery.length === 1 ? " gallery-grid--single" : ""}${product.fullWidthGallery ? " gallery-grid--edge" : ""}${product.tightGallery ? " gallery-grid--tight" : ""}">${galleryItems}</div>
         </section>
       `;
@@ -1183,7 +1223,7 @@
           <article>
             <section class="detail-layout">
             <div class="detail-media${product.imageFit === "contain" ? " is-contain" : ""}${product.tightImagePadding ? " is-tight" : ""}">
-              <img src="${product.image}" alt="${escapeHtml(product[lang])}" fetchpriority="high" data-parallax data-parallax-speed="0.035" />
+              <img src="${productImage(product, lang)}" alt="${escapeHtml(product[lang])}" fetchpriority="high" data-parallax data-parallax-speed="0.035" />
             </div>
             <div class="detail-copy" data-reveal>
               <p class="eyebrow">${escapeHtml(category[lang])}</p>
