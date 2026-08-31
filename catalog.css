@@ -2897,8 +2897,7 @@ body.has-lightbox {
   margin-top: 14px;
 }
 
-.quilt-size-card,
-.quilt-product-card {
+.quilt-size-card {
   min-width: 0;
   padding: clamp(4px, 0.9vw, 9px);
   border: 1px solid rgba(117, 88, 56, 0.18);
@@ -2912,18 +2911,14 @@ body.has-lightbox {
 
 .quilt-size-card:hover,
 .quilt-size-card:focus-visible,
-.quilt-size-card.is-active,
-.quilt-product-card:hover,
-.quilt-product-card:focus-visible,
-.quilt-product-card.is-active {
+.quilt-size-card.is-active {
   border-color: rgba(169, 133, 79, 0.68);
   background: rgba(255, 253, 247, 0.98);
   box-shadow: 0 15px 34px rgba(57, 42, 31, 0.14);
   transform: translateY(-3px);
 }
 
-.quilt-size-card__image,
-.quilt-product-card__image {
+.quilt-size-card__image {
   position: relative;
   display: block;
   aspect-ratio: 4 / 5;
@@ -2932,15 +2927,13 @@ body.has-lightbox {
   background: #fff;
 }
 
-.quilt-size-card__image img,
-.quilt-product-card__image img {
+.quilt-size-card__image img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-.quilt-size-card strong,
-.quilt-product-card > strong {
+.quilt-size-card strong {
   display: block;
   margin: 9px 3px 4px;
   font-size: clamp(0.76rem, 2.2vw, 1.05rem);
@@ -2963,94 +2956,37 @@ body.has-lightbox {
   margin-bottom: 14px;
 }
 
-.quilt-size-panel__header .eyebrow {
-  margin-bottom: 4px;
-}
-
-.quilt-product-grid {
+.quilt-size-gallery {
   display: grid;
-  grid-template-columns: repeat(var(--quilt-product-count), minmax(0, 1fr));
+  grid-template-columns: repeat(var(--quilt-image-count), minmax(0, 1fr));
   gap: clamp(7px, 1.8vw, 18px);
 }
 
-.quilt-product-grid.is-single {
-  width: min(100%, 420px);
-}
-
-.quilt-product-card__image > span {
-  position: absolute;
-  top: 7px;
-  left: 7px;
-  display: grid;
-  min-width: 30px;
-  min-height: 30px;
-  place-items: center;
-  padding: 4px 8px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  border-radius: 999px;
-  color: #4e4038;
-  background: rgba(255, 253, 248, 0.88);
-  font-family: var(--serif);
-  font-size: 0.78rem;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-.quilt-detail {
-  margin-top: clamp(20px, 4vw, 34px);
-  padding-top: clamp(16px, 3vw, 24px);
-  border-top: 1px solid var(--line);
-}
-
-.quilt-detail__header {
-  margin-bottom: 12px;
-}
-
-.quilt-detail__header h3 {
-  margin: 2px 0 0;
-  font-family: var(--serif);
-  font-size: clamp(1.25rem, 4vw, 1.9rem);
-  font-weight: 400;
-}
-
-.quilt-detail__gallery {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(min(72vw, 300px), 1fr);
-  gap: clamp(7px, 1.6vw, 15px);
-  overflow-x: auto;
-  padding: 2px 2px 9px;
-  scroll-snap-type: x proximity;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(169, 133, 79, 0.6) rgba(117, 88, 56, 0.08);
-}
-
-.quilt-detail__image {
+.quilt-size-gallery__item {
   display: block;
   min-width: 0;
-  padding: 4px;
+  aspect-ratio: 3 / 4;
+  padding: clamp(2px, 0.6vw, 6px);
   overflow: hidden;
   border: 1px solid rgba(117, 88, 56, 0.15);
   border-radius: var(--radius-sm);
   background: #fff;
+  box-shadow: 0 10px 24px rgba(57, 42, 31, 0.08);
   cursor: zoom-in;
-  scroll-snap-align: start;
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
 }
 
-.quilt-detail__image img {
+.quilt-size-gallery__item:hover,
+.quilt-size-gallery__item:focus-visible {
+  border-color: rgba(169, 133, 79, 0.68);
+  box-shadow: 0 15px 30px rgba(57, 42, 31, 0.14);
+  transform: translateY(-3px);
+}
+
+.quilt-size-gallery__item img {
   width: 100%;
-  height: auto;
-  max-height: 72svh;
+  height: 100%;
   object-fit: contain;
-}
-
-@media (min-width: 760px) {
-  .quilt-detail__gallery {
-    grid-template-columns: repeat(var(--quilt-detail-count), minmax(0, 1fr));
-    grid-auto-flow: initial;
-    grid-auto-columns: initial;
-    overflow-x: visible;
-  }
 }
 
 @media (max-width: 480px) {
@@ -3062,34 +2998,31 @@ body.has-lightbox {
 
   .quilt-catalog__header,
   .quilt-size-selector > h2,
-  .quilt-size-panel__header,
-  .quilt-detail__header {
+  .quilt-size-panel__header {
     padding-inline: 3px;
   }
 
   .quilt-size-grid,
-  .quilt-product-grid {
+  .quilt-size-gallery {
     gap: 4px;
   }
 
-  .quilt-size-card,
-  .quilt-product-card {
+  .quilt-size-card {
     padding: 2px;
     border-radius: 8px;
   }
 
-  .quilt-size-card__image,
-  .quilt-product-card__image {
+  .quilt-size-card__image {
     border-radius: 6px;
   }
 
-  .quilt-size-card strong,
-  .quilt-product-card > strong {
+  .quilt-size-card strong {
     margin: 7px 1px 4px;
   }
 
-  .quilt-product-grid.is-single {
-    width: min(100%, 360px);
+  .quilt-size-gallery__item {
+    padding: 2px;
+    border-radius: 7px;
   }
 }
 
