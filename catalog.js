@@ -37,7 +37,73 @@
           id: "lightweight-quilts",
           zh: "薄被",
           en: "Lightweight Quilts",
-          image: "images/lightweight-quilt.jpg",
+          image: "images/lightweight-quilts/twin-cotton-knit-89.jpg",
+          imageFit: "contain",
+          tightImagePadding: true,
+          hideDefaultGallery: true,
+          sizeCollections: [
+            {
+              id: "twin",
+              label: "Twin",
+              cover: "images/lightweight-quilts/twin-cotton-knit-89.jpg",
+              products: [
+                {
+                  id: "twin-cotton-knit",
+                  zh: "全棉针织棉单人被",
+                  en: "Cotton Knit Twin Quilt",
+                  image: "images/lightweight-quilts/twin-cotton-knit-89.jpg",
+                  gallery: ["images/lightweight-quilts/twin-cotton-knit-89.jpg"],
+                },
+                {
+                  id: "twin-cooling",
+                  zh: "冰感水光棉凉感夏被",
+                  en: "Cooling Twin Summer Quilt",
+                  image: "images/lightweight-quilts/twin-cooling-quilt-55.jpg",
+                  gallery: ["images/lightweight-quilts/twin-cooling-quilt-55.jpg"],
+                },
+                {
+                  id: "twin-gauze",
+                  zh: "全棉双层纱夏被",
+                  en: "Cotton Gauze Twin Quilt",
+                  image: "images/lightweight-quilts/twin-gauze-quilt-49.jpg",
+                  gallery: ["images/lightweight-quilts/twin-gauze-quilt-49.jpg"],
+                },
+              ],
+            },
+            {
+              id: "queen",
+              label: "Queen",
+              cover: "images/lightweight-quilts/queen-cover.jpg",
+              products: [
+                {
+                  id: "queen-embroidered",
+                  zh: "棉麻刺绣薄被",
+                  en: "Embroidered Queen Quilt",
+                  image: "images/lightweight-quilts/queen-embroidered-quilt-99.jpg",
+                  gallery: [
+                    "images/lightweight-quilts/queen-embroidered-quilt-99.jpg",
+                    "images/lightweight-quilts/queen-cover.jpg",
+                    "images/lightweight-quilts/queen-material-detail.jpg",
+                    "images/lightweight-quilts/queen-bedroom-detail.jpg",
+                  ],
+                },
+              ],
+            },
+            {
+              id: "king",
+              label: "King",
+              cover: "images/lightweight-quilts/king-organic-silk-quilt-169.jpg",
+              products: [
+                {
+                  id: "king-organic-silk",
+                  zh: "可调温有机蚕丝夏被",
+                  en: "Organic Silk King Summer Quilt",
+                  image: "images/lightweight-quilts/king-organic-silk-quilt-169.jpg",
+                  gallery: ["images/lightweight-quilts/king-organic-silk-quilt-169.jpg"],
+                },
+              ],
+            },
+          ],
           description: {
             zh: "轻盈、易于叠搭，适合换季、空调房和喜欢轻柔包裹感的睡眠场景。",
             en: "An easy, breathable layer for changing seasons, cool rooms, and lighter sleep.",
@@ -84,6 +150,36 @@
               "images/silk-duvets/en-02-sleep-comfort.jpg",
               "images/silk-duvets/en-03-carry-bag.jpg",
               "images/silk-duvets/en-04-draped-detail.jpg",
+            ],
+          },
+          lineupByLanguage: {
+            zh: [
+              {
+                image: "images/silk-duvets/cn-01-product-overview.jpg",
+                label: "可水洗蚕丝夏被",
+              },
+              {
+                image: "images/silk-duvets/silk-duvet-golden.jpg",
+                label: "黄金蚕丝被",
+              },
+              {
+                image: "images/silk-duvets/silk-duvet-mercury.jpg",
+                label: "水星蚕丝被",
+              },
+            ],
+            en: [
+              {
+                image: "images/silk-duvets/en-01-product-overview.jpg",
+                label: "Washable Silk Summer Quilt",
+              },
+              {
+                image: "images/silk-duvets/silk-duvet-golden.jpg",
+                label: "Golden Silk Duvet",
+              },
+              {
+                image: "images/silk-duvets/silk-duvet-mercury.jpg",
+                label: "Mercury Silk Series",
+              },
             ],
           },
           description: {
@@ -1150,6 +1246,162 @@
     `;
   }
 
+  function productLineup(category, product, lang) {
+    const items = product.lineupByLanguage?.[lang];
+    if (!items?.length) return "";
+
+    const cards = items
+      .map(
+        (item, index) => `
+          <button
+            class="silk-lineup__card"
+            type="button"
+            data-lightbox-image="${item.image}"
+            data-lightbox-title="${escapeHtml(item.label)}"
+            aria-label="${escapeHtml(copy[lang].imagePreview)}：${escapeHtml(item.label)}"
+            data-reveal
+            style="--reveal-delay: ${index * 70}ms"
+          >
+            <img
+              src="${item.image}"
+              alt="${escapeHtml(item.label)}"
+              loading="${index === 0 ? "eager" : "lazy"}"
+              decoding="async"
+            />
+          </button>
+        `,
+      )
+      .join("");
+
+    return `
+      <section class="silk-lineup" data-reveal aria-labelledby="silk-lineup-title">
+        <header class="silk-lineup__header">
+          <p class="eyebrow">${escapeHtml(category[lang])}</p>
+          <h1 id="silk-lineup-title">${escapeHtml(product[lang])}</h1>
+          <p>${escapeHtml(product[alternateLanguage(lang)])}</p>
+        </header>
+        <div class="silk-lineup__grid">${cards}</div>
+      </section>
+    `;
+  }
+
+  function quiltSizeCatalog(category, product, lang) {
+    const sizes = product.sizeCollections;
+    if (!sizes?.length) return "";
+
+    const isZh = lang === "zh";
+    const sizeCards = sizes
+      .map(
+        (size, index) => `
+          <button
+            class="quilt-size-card${index === 0 ? " is-active" : ""}"
+            type="button"
+            role="tab"
+            aria-selected="${index === 0 ? "true" : "false"}"
+            aria-controls="quilt-size-${size.id}"
+            data-quilt-size="${size.id}"
+          >
+            <span class="quilt-size-card__image">
+              <img src="${size.cover}" alt="" loading="${index === 0 ? "eager" : "lazy"}" decoding="async" />
+            </span>
+            <strong>${escapeHtml(size.label)}</strong>
+          </button>
+        `,
+      )
+      .join("");
+
+    const sizePanels = sizes
+      .map((size, sizeIndex) => {
+        const productCards = size.products
+          .map(
+            (item, productIndex) => `
+              <button
+                class="quilt-product-card"
+                type="button"
+                data-quilt-product="${size.id}:${item.id}"
+                aria-expanded="false"
+                aria-controls="quilt-details-${size.id}-${item.id}"
+              >
+                <span class="quilt-product-card__image">
+                  <img src="${item.image}" alt="${escapeHtml(item[lang])}" loading="${sizeIndex === 0 ? "eager" : "lazy"}" decoding="async" />
+                  <span>${String(productIndex + 1).padStart(2, "0")}</span>
+                </span>
+                <strong>${escapeHtml(item[lang])}</strong>
+              </button>
+            `,
+          )
+          .join("");
+
+        const detailPanels = size.products
+          .map((item) => {
+            const gallery = item.gallery
+              .map(
+                (image, index) => `
+                  <button
+                    class="quilt-detail__image"
+                    type="button"
+                    data-lightbox-image="${image}"
+                    data-lightbox-title="${escapeHtml(item[lang])} ${index + 1}"
+                    aria-label="${escapeHtml(copy[lang].imagePreview)}：${escapeHtml(item[lang])} ${index + 1}"
+                  >
+                    <img src="${image}" alt="${escapeHtml(item[lang])} ${index + 1}" loading="lazy" decoding="async" />
+                  </button>
+                `,
+              )
+              .join("");
+
+            return `
+              <section
+                class="quilt-detail"
+                id="quilt-details-${size.id}-${item.id}"
+                data-quilt-details="${size.id}:${item.id}"
+                hidden
+              >
+                <header class="quilt-detail__header">
+                  <p class="eyebrow">${escapeHtml(size.label)}</p>
+                  <h3>${escapeHtml(item[lang])}</h3>
+                </header>
+                <div class="quilt-detail__gallery" style="--quilt-detail-count: ${item.gallery.length}">${gallery}</div>
+              </section>
+            `;
+          })
+          .join("");
+
+        return `
+          <section
+            class="quilt-size-panel"
+            id="quilt-size-${size.id}"
+            role="tabpanel"
+            data-quilt-size-panel="${size.id}"
+            ${sizeIndex === 0 ? "" : "hidden"}
+          >
+            <header class="quilt-size-panel__header">
+              <p class="eyebrow">${escapeHtml(size.label)}</p>
+              <h2>${isZh ? "选择款式" : "Choose a Style"}</h2>
+            </header>
+            <div class="quilt-product-grid${size.products.length === 1 ? " is-single" : ""}" style="--quilt-product-count: ${size.products.length}">${productCards}</div>
+            <div class="quilt-detail-panels">${detailPanels}</div>
+          </section>
+        `;
+      })
+      .join("");
+
+    return `
+      <section class="quilt-catalog" data-quilt-catalog data-reveal aria-labelledby="quilt-catalog-title">
+        <header class="quilt-catalog__header">
+          <p class="eyebrow">${escapeHtml(category[lang])}</p>
+          <h1 id="quilt-catalog-title">${escapeHtml(product[lang])}</h1>
+          <p>${escapeHtml(product[alternateLanguage(lang)])}</p>
+        </header>
+        <section class="quilt-size-selector" aria-labelledby="quilt-size-heading">
+          <h2 id="quilt-size-heading">${isZh ? "选择尺寸" : "Choose a Size"}</h2>
+          <div class="quilt-size-grid" role="tablist" aria-label="${isZh ? "薄被尺寸" : "Quilt sizes"}">${sizeCards}</div>
+        </section>
+        <div class="quilt-size-panels">${sizePanels}</div>
+      </section>
+    `;
+  }
+
   function detailScreen(route) {
     const { lang, category: categoryId, product } = route;
     const t = copy[lang];
@@ -1195,6 +1447,27 @@
     const patternShowcaseSection = patternShowcase(product, lang);
     const masonryGallerySection = productMasonryGallery(product, lang);
     const introVisual = productIntroVisual(product, lang);
+    const quiltCatalogSection = quiltSizeCatalog(category, product, lang);
+    const lineupSection = productLineup(category, product, lang);
+    const detailIntro = quiltCatalogSection || lineupSection || `
+      <section class="detail-layout">
+        <div class="detail-media${product.imageFit === "contain" ? " is-contain" : ""}${product.tightImagePadding ? " is-tight" : ""}">
+          <img src="${productImage(product, lang)}" alt="${escapeHtml(product[lang])}" fetchpriority="high" data-parallax data-parallax-speed="0.035" />
+        </div>
+        <div class="detail-copy" data-reveal>
+          <p class="eyebrow">${escapeHtml(category[lang])}</p>
+          <h1>${escapeHtml(product[lang])}</h1>
+          <p class="detail-copy__secondary">${escapeHtml(product[other])}</p>
+          ${product.price ? `<p class="detail-copy__price">${escapeHtml(product.price[lang])}</p>` : ""}
+          ${product.description?.[lang] ? `<p class="detail-copy__description">${escapeHtml(product.description[lang])}</p>` : ""}
+          <div class="detail-facts" aria-label="${lang === "zh" ? "产品特点" : "Product qualities"}">
+            <div class="detail-fact"><strong>01</strong><span>${escapeHtml(t.natural)}</span></div>
+            <div class="detail-fact"><strong>02</strong><span>${escapeHtml(t.craft)}</span></div>
+            <div class="detail-fact"><strong>03</strong><span>${escapeHtml(t.everyday)}</span></div>
+          </div>
+        </div>
+      </section>
+    `;
 
     const video = product.video
       ? `
@@ -1221,23 +1494,7 @@
       <main class="screen" id="main-content">
           ${headerHtml(route, `${lang}/${categoryId}`)}
           <article>
-            <section class="detail-layout">
-            <div class="detail-media${product.imageFit === "contain" ? " is-contain" : ""}${product.tightImagePadding ? " is-tight" : ""}">
-              <img src="${productImage(product, lang)}" alt="${escapeHtml(product[lang])}" fetchpriority="high" data-parallax data-parallax-speed="0.035" />
-            </div>
-            <div class="detail-copy" data-reveal>
-              <p class="eyebrow">${escapeHtml(category[lang])}</p>
-              <h1>${escapeHtml(product[lang])}</h1>
-              <p class="detail-copy__secondary">${escapeHtml(product[other])}</p>
-              ${product.price ? `<p class="detail-copy__price">${escapeHtml(product.price[lang])}</p>` : ""}
-              ${product.description?.[lang] ? `<p class="detail-copy__description">${escapeHtml(product.description[lang])}</p>` : ""}
-              <div class="detail-facts" aria-label="${lang === "zh" ? "产品特点" : "Product qualities"}">
-                <div class="detail-fact"><strong>01</strong><span>${escapeHtml(t.natural)}</span></div>
-                <div class="detail-fact"><strong>02</strong><span>${escapeHtml(t.craft)}</span></div>
-                <div class="detail-fact"><strong>03</strong><span>${escapeHtml(t.everyday)}</span></div>
-              </div>
-            </div>
-          </section>
+          ${detailIntro}
           ${introVisual}
           ${product.fullWidthGallery ? gallerySection : ""}
           <div class="content-shell detail-support">
@@ -1308,6 +1565,36 @@
         setHeroSlide(carousel, requested);
         startHeroAutoplay(carousel);
       }
+      return;
+    }
+
+    const quiltSizeButton = event.target.closest("[data-quilt-size]");
+    if (quiltSizeButton) {
+      const quiltCatalog = quiltSizeButton.closest("[data-quilt-catalog]");
+      const requestedSize = quiltSizeButton.dataset.quiltSize;
+      quiltCatalog?.querySelectorAll("[data-quilt-size]").forEach((button) => {
+        const isActive = button.dataset.quiltSize === requestedSize;
+        button.classList.toggle("is-active", isActive);
+        button.setAttribute("aria-selected", String(isActive));
+      });
+      quiltCatalog?.querySelectorAll("[data-quilt-size-panel]").forEach((panel) => {
+        panel.hidden = panel.dataset.quiltSizePanel !== requestedSize;
+      });
+      return;
+    }
+
+    const quiltProductButton = event.target.closest("[data-quilt-product]");
+    if (quiltProductButton) {
+      const quiltPanel = quiltProductButton.closest("[data-quilt-size-panel]");
+      const requestedProduct = quiltProductButton.dataset.quiltProduct;
+      quiltPanel?.querySelectorAll("[data-quilt-product]").forEach((button) => {
+        const isActive = button.dataset.quiltProduct === requestedProduct;
+        button.classList.toggle("is-active", isActive);
+        button.setAttribute("aria-expanded", String(isActive));
+      });
+      quiltPanel?.querySelectorAll("[data-quilt-details]").forEach((panel) => {
+        panel.hidden = panel.dataset.quiltDetails !== requestedProduct;
+      });
       return;
     }
 
