@@ -37,7 +37,7 @@
           id: "lightweight-quilts",
           zh: "薄被",
           en: "Lightweight Quilts",
-          image: "images/lightweight-quilts/twin-cotton-knit-89.jpg",
+          image: "images/lightweight-quilts/queen-cover.jpg",
           imageFit: "contain",
           tightImagePadding: true,
           hideDefaultGallery: true,
@@ -46,62 +46,28 @@
               id: "twin",
               label: "Twin",
               cover: "images/lightweight-quilts/twin-cotton-knit-89.jpg",
-              products: [
-                {
-                  id: "twin-cotton-knit",
-                  zh: "全棉针织棉单人被",
-                  en: "Cotton Knit Twin Quilt",
-                  image: "images/lightweight-quilts/twin-cotton-knit-89.jpg",
-                  gallery: ["images/lightweight-quilts/twin-cotton-knit-89.jpg"],
-                },
-                {
-                  id: "twin-cooling",
-                  zh: "冰感水光棉凉感夏被",
-                  en: "Cooling Twin Summer Quilt",
-                  image: "images/lightweight-quilts/twin-cooling-quilt-55.jpg",
-                  gallery: ["images/lightweight-quilts/twin-cooling-quilt-55.jpg"],
-                },
-                {
-                  id: "twin-gauze",
-                  zh: "全棉双层纱夏被",
-                  en: "Cotton Gauze Twin Quilt",
-                  image: "images/lightweight-quilts/twin-gauze-quilt-49.jpg",
-                  gallery: ["images/lightweight-quilts/twin-gauze-quilt-49.jpg"],
-                },
+              images: [
+                "images/lightweight-quilts/twin-cotton-knit-89.jpg",
+                "images/lightweight-quilts/twin-cooling-quilt-55.jpg",
+                "images/lightweight-quilts/twin-gauze-quilt-49.jpg",
               ],
             },
             {
               id: "queen",
               label: "Queen",
               cover: "images/lightweight-quilts/queen-cover.jpg",
-              products: [
-                {
-                  id: "queen-embroidered",
-                  zh: "棉麻刺绣薄被",
-                  en: "Embroidered Queen Quilt",
-                  image: "images/lightweight-quilts/queen-embroidered-quilt-99.jpg",
-                  gallery: [
-                    "images/lightweight-quilts/queen-embroidered-quilt-99.jpg",
-                    "images/lightweight-quilts/queen-cover.jpg",
-                    "images/lightweight-quilts/queen-material-detail.jpg",
-                    "images/lightweight-quilts/queen-bedroom-detail.jpg",
-                  ],
-                },
+              images: [
+                "images/lightweight-quilts/queen-cover.jpg",
+                "images/lightweight-quilts/queen-embroidered-quilt-99.jpg",
+                "images/lightweight-quilts/queen-material-detail.jpg",
+                "images/lightweight-quilts/queen-bedroom-detail.jpg",
               ],
             },
             {
               id: "king",
               label: "King",
               cover: "images/lightweight-quilts/king-organic-silk-quilt-169.jpg",
-              products: [
-                {
-                  id: "king-organic-silk",
-                  zh: "可调温有机蚕丝夏被",
-                  en: "Organic Silk King Summer Quilt",
-                  image: "images/lightweight-quilts/king-organic-silk-quilt-169.jpg",
-                  gallery: ["images/lightweight-quilts/king-organic-silk-quilt-169.jpg"],
-                },
-              ],
+              images: ["images/lightweight-quilts/king-organic-silk-quilt-169.jpg"],
             },
           ],
           description: {
@@ -1312,59 +1278,25 @@
 
     const sizePanels = sizes
       .map((size, sizeIndex) => {
-        const productCards = size.products
+        const gallery = size.images
           .map(
-            (item, productIndex) => `
+            (image, imageIndex) => `
               <button
-                class="quilt-product-card"
+                class="quilt-size-gallery__item"
                 type="button"
-                data-quilt-product="${size.id}:${item.id}"
-                aria-expanded="false"
-                aria-controls="quilt-details-${size.id}-${item.id}"
+                data-lightbox-image="${image}"
+                data-lightbox-title="${escapeHtml(size.label)} ${imageIndex + 1}"
+                aria-label="${escapeHtml(copy[lang].imagePreview)}：${escapeHtml(size.label)} ${imageIndex + 1}"
               >
-                <span class="quilt-product-card__image">
-                  <img src="${item.image}" alt="${escapeHtml(item[lang])}" loading="${sizeIndex === 0 ? "eager" : "lazy"}" decoding="async" />
-                  <span>${String(productIndex + 1).padStart(2, "0")}</span>
-                </span>
-                <strong>${escapeHtml(item[lang])}</strong>
+                <img
+                  src="${image}"
+                  alt="${escapeHtml(size.label)} ${imageIndex + 1}"
+                  loading="${sizeIndex === 0 ? "eager" : "lazy"}"
+                  decoding="async"
+                />
               </button>
             `,
           )
-          .join("");
-
-        const detailPanels = size.products
-          .map((item) => {
-            const gallery = item.gallery
-              .map(
-                (image, index) => `
-                  <button
-                    class="quilt-detail__image"
-                    type="button"
-                    data-lightbox-image="${image}"
-                    data-lightbox-title="${escapeHtml(item[lang])} ${index + 1}"
-                    aria-label="${escapeHtml(copy[lang].imagePreview)}：${escapeHtml(item[lang])} ${index + 1}"
-                  >
-                    <img src="${image}" alt="${escapeHtml(item[lang])} ${index + 1}" loading="lazy" decoding="async" />
-                  </button>
-                `,
-              )
-              .join("");
-
-            return `
-              <section
-                class="quilt-detail"
-                id="quilt-details-${size.id}-${item.id}"
-                data-quilt-details="${size.id}:${item.id}"
-                hidden
-              >
-                <header class="quilt-detail__header">
-                  <p class="eyebrow">${escapeHtml(size.label)}</p>
-                  <h3>${escapeHtml(item[lang])}</h3>
-                </header>
-                <div class="quilt-detail__gallery" style="--quilt-detail-count: ${item.gallery.length}">${gallery}</div>
-              </section>
-            `;
-          })
           .join("");
 
         return `
@@ -1376,11 +1308,9 @@
             ${sizeIndex === 0 ? "" : "hidden"}
           >
             <header class="quilt-size-panel__header">
-              <p class="eyebrow">${escapeHtml(size.label)}</p>
-              <h2>${isZh ? "选择款式" : "Choose a Style"}</h2>
+              <h2>${escapeHtml(size.label)}</h2>
             </header>
-            <div class="quilt-product-grid${size.products.length === 1 ? " is-single" : ""}" style="--quilt-product-count: ${size.products.length}">${productCards}</div>
-            <div class="quilt-detail-panels">${detailPanels}</div>
+            <div class="quilt-size-gallery" style="--quilt-image-count: ${size.images.length}">${gallery}</div>
           </section>
         `;
       })
@@ -1579,21 +1509,6 @@
       });
       quiltCatalog?.querySelectorAll("[data-quilt-size-panel]").forEach((panel) => {
         panel.hidden = panel.dataset.quiltSizePanel !== requestedSize;
-      });
-      return;
-    }
-
-    const quiltProductButton = event.target.closest("[data-quilt-product]");
-    if (quiltProductButton) {
-      const quiltPanel = quiltProductButton.closest("[data-quilt-size-panel]");
-      const requestedProduct = quiltProductButton.dataset.quiltProduct;
-      quiltPanel?.querySelectorAll("[data-quilt-product]").forEach((button) => {
-        const isActive = button.dataset.quiltProduct === requestedProduct;
-        button.classList.toggle("is-active", isActive);
-        button.setAttribute("aria-expanded", String(isActive));
-      });
-      quiltPanel?.querySelectorAll("[data-quilt-details]").forEach((panel) => {
-        panel.hidden = panel.dataset.quiltDetails !== requestedProduct;
       });
       return;
     }
