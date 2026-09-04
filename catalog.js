@@ -17,7 +17,37 @@
           id: "duvet-cover-sets",
           zh: "被套四件套",
           en: "Duvet Cover Sets",
-          image: "images/duvet-cover.jpg",
+          image: "images/duvet-cover-sets/sep-2026/queen-knit-cotton-99.jpg",
+          imageFit: "contain",
+          tightImagePadding: true,
+          hideDefaultGallery: true,
+          sizeCollections: [
+            {
+              id: "king",
+              label: "King",
+              cover: "images/duvet-cover.jpg",
+              images: ["images/duvet-cover.jpg"],
+            },
+            {
+              id: "queen",
+              label: "Queen",
+              cover: "images/duvet-cover-sets/sep-2026/queen-knit-cotton-99.jpg",
+              images: [
+                "images/duvet-cover-sets/sep-2026/queen-knit-cotton-99.jpg",
+                "images/duvet-cover-sets/sep-2026/queen-patchwork-bear-99.jpg",
+                "images/duvet-cover-sets/sep-2026/queen-cotton-linen-summer.jpg",
+                "images/duvet-cover-sets/sep-2026/queen-fabric-detail.jpg",
+                "images/duvet-cover-sets/sep-2026/queen-patchwork-detail.jpg",
+                "images/duvet-cover-sets/sep-2026/queen-quilt-texture.jpg",
+              ],
+            },
+            {
+              id: "twin",
+              label: "Twin",
+              cover: "images/duvet-cover.jpg",
+              images: ["images/duvet-cover.jpg"],
+            },
+          ],
           description: {
             zh: "以柔和色彩与自然触感营造安静卧室氛围，适合日常换洗与四季搭配。",
             en: "Soft color and natural texture create a calm bedroom made for everyday comfort.",
@@ -43,14 +73,10 @@
           hideDefaultGallery: true,
           sizeCollections: [
             {
-              id: "twin",
-              label: "Twin",
-              cover: "images/lightweight-quilts/twin-cotton-knit-89.jpg",
-              images: [
-                "images/lightweight-quilts/twin-cotton-knit-89.jpg",
-                "images/lightweight-quilts/twin-cooling-quilt-55.jpg",
-                "images/lightweight-quilts/twin-gauze-quilt-49.jpg",
-              ],
+              id: "king",
+              label: "King",
+              cover: "images/lightweight-quilts/king-organic-silk-quilt-169.jpg",
+              images: ["images/lightweight-quilts/king-organic-silk-quilt-169.jpg"],
             },
             {
               id: "queen",
@@ -64,10 +90,14 @@
               ],
             },
             {
-              id: "king",
-              label: "King",
-              cover: "images/lightweight-quilts/king-organic-silk-quilt-169.jpg",
-              images: ["images/lightweight-quilts/king-organic-silk-quilt-169.jpg"],
+              id: "twin",
+              label: "Twin",
+              cover: "images/lightweight-quilts/twin-cotton-knit-89.jpg",
+              images: [
+                "images/lightweight-quilts/twin-cotton-knit-89.jpg",
+                "images/lightweight-quilts/twin-cooling-quilt-55.jpg",
+                "images/lightweight-quilts/twin-gauze-quilt-49.jpg",
+              ],
             },
           ],
           description: {
@@ -99,6 +129,7 @@
           fullWidthGallery: true,
           tightImagePadding: true,
           tightGallery: true,
+          threeColumnGallery: true,
           hideGalleryHeaderByLanguage: ["en"],
           galleryTitle: {
             zh: "可水洗蚕丝夏被",
@@ -1371,7 +1402,7 @@
               <h2>${escapeHtml(galleryTitle)}</h2>
             </header>
           `}
-          <div class="gallery-grid${product.galleryFit === "contain" ? " is-contain" : ""}${gallery.length === 1 ? " gallery-grid--single" : ""}${product.fullWidthGallery ? " gallery-grid--edge" : ""}${product.tightGallery ? " gallery-grid--tight" : ""}">${galleryItems}</div>
+          <div class="gallery-grid${product.galleryFit === "contain" ? " is-contain" : ""}${gallery.length === 1 ? " gallery-grid--single" : ""}${product.fullWidthGallery ? " gallery-grid--edge" : ""}${product.tightGallery ? " gallery-grid--tight" : ""}${product.threeColumnGallery ? " gallery-grid--three" : ""}">${galleryItems}</div>
         </section>
       `;
     const patternShowcaseSection = patternShowcase(product, lang);
