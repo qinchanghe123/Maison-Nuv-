@@ -2827,6 +2827,31 @@ body.has-lightbox {
   background: #fff;
 }
 
+/* Silk Duvet Gallery: keep every image in a compact three-column horizontal row. */
+.gallery-grid.gallery-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(5px, 1.4vw, 14px);
+}
+
+.gallery-grid.gallery-grid--three .gallery-item:first-child {
+  grid-column: auto;
+}
+
+.gallery-grid.gallery-grid--three.is-contain .gallery-item {
+  min-height: 0;
+  aspect-ratio: 3 / 2;
+  padding: clamp(3px, 0.8vw, 8px);
+}
+
+.gallery-grid.gallery-grid--three.is-contain .gallery-item img,
+.gallery-grid.gallery-grid--three.is-contain .gallery-item:first-child img {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
 @media (max-width: 480px) {
   .silk-lineup {
     width: calc(100% - 10px);
